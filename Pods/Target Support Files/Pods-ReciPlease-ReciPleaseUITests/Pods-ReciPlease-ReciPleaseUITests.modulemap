@@ -1,0 +1,6 @@
+framework module Pods_ReciPlease_ReciPleaseUITests {
+  umbrella header "Pods-ReciPlease-ReciPleaseUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
