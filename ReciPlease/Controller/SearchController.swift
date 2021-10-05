@@ -14,10 +14,12 @@ class SearchController: UIViewController {
     @IBOutlet weak var ingredientTableView: UITableView!
     
     var ingredients: [String] = []
+    var searchManager: SearchManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        searchManager = SearchManager(delegate: self)
     }
     
     private func setupTableView() {
@@ -28,6 +30,7 @@ class SearchController: UIViewController {
     }
 
     @IBAction func searchPressed(_ sender: Any) {
+        searchManager.searchRecipe(ingredients: ingredients)
         self.navigationController?.pushViewController(FavoriteController(), animated: true)
     }
     
@@ -60,5 +63,8 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+}
+
+extension SearchController: searchManagerDelegate {
     
 }
