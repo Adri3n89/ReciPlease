@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DetailController: UIViewController {
     
@@ -16,17 +17,21 @@ class DetailController: UIViewController {
     @IBOutlet weak var effectView: UIView!
     @IBOutlet weak var ingredientTableView: UITableView!
     
-    var ingredients = [
-        "50g de fromage",
-        "100g de tomate",
-        "6 olives",
-        "2 tranches de jambon"
-    ]
+    var recipe: Recipe?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradient(view: effectView)
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
+        recipeImageview.sd_setImage(with: URL(string: recipe!.image), placeholderImage: nil,
+                                    options: SDWebImageOptions.highPriority,
+                                    context: nil,
+                                    progress: nil,
+                                    completed: { _, downloadException, _, downloadURL in
+                                })
+        recipeNameLabel.text = recipe!.label
+        likeLabel.text = "\(recipe!.yield)"
+        timeLabel.text = "\(recipe!.totalTime)"
         setupTableview()
     }
     
@@ -42,7 +47,11 @@ class DetailController: UIViewController {
     }
 
     @IBAction func getDirectionPressed(sender: Any) {
-        print("go to directions")
+        guard let recipe = recipe else { return }
+        let newController = WebController()
+        newController.urlStr = recipe.url
+        print(recipe.url)
+        self.navigationController?.pushViewController(newController, animated: true)
     }
     
     func addGradient(view: UIView){
@@ -56,12 +65,12 @@ class DetailController: UIViewController {
 
 extension DetailController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return (recipe?.ingredientLines.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
-        cell.ingredientLabel.text = "- " + ingredients[indexPath.row]
+        cell.ingredientLabel.text = "- " + (recipe?.ingredientLines[indexPath.row])!
         return cell
     }
     

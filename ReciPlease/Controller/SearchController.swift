@@ -31,7 +31,6 @@ class SearchController: UIViewController {
 
     @IBAction func searchPressed(_ sender: Any) {
         searchManager.searchRecipe(ingredients: ingredients)
-        self.navigationController?.pushViewController(FavoriteController(), animated: true)
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -66,5 +65,12 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchController: searchManagerDelegate {
+    func searchRecipeSuccess(response: APIResponse) {
+        let newController = FavoriteController()
+        newController.favorite = false 
+        newController.researchResult = response
+        self.navigationController?.pushViewController(newController, animated: true)
+    }
+    
     
 }

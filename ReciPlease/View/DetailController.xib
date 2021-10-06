@@ -30,8 +30,8 @@
                     <rect key="frame" x="0.0" y="132.33333333333331" width="414" height="132.33333333333331"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quinoa Salad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5v-f3-4l8">
-                    <rect key="frame" x="113.00000000000001" y="203.66666666666666" width="188.33333333333337" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quinoa Salad" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5v-f3-4l8">
+                    <rect key="frame" x="20" y="203.66666666666666" width="374" height="41"/>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -162,12 +162,14 @@
                 <constraint firstItem="LSq-bH-b1v" firstAttribute="height" secondItem="5lZ-Qb-Est" secondAttribute="height" multiplier="0.5" id="FMd-pe-gtq"/>
                 <constraint firstItem="LSq-bH-b1v" firstAttribute="bottom" secondItem="5lZ-Qb-Est" secondAttribute="bottom" id="Fn0-Ae-Be7"/>
                 <constraint firstItem="5lZ-Qb-Est" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Hfe-2e-oVc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q5v-f3-4l8" secondAttribute="trailing" constant="20" id="KAz-6y-IFZ"/>
                 <constraint firstItem="u9p-xT-5fa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Uws-sP-8k1"/>
                 <constraint firstItem="LSq-bH-b1v" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VOa-Jb-Eb9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u9p-xT-5fa" secondAttribute="bottom" constant="20" id="fW0-oh-I21"/>
                 <constraint firstItem="Q5v-f3-4l8" firstAttribute="bottom" secondItem="5lZ-Qb-Est" secondAttribute="bottom" constant="-20" id="iEh-kD-o5W"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u9p-xT-5fa" secondAttribute="trailing" id="nga-k0-An3"/>
                 <constraint firstItem="5lZ-Qb-Est" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sve-sf-4fV"/>
+                <constraint firstItem="Q5v-f3-4l8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="v1o-dw-XU4"/>
                 <constraint firstItem="u9p-xT-5fa" firstAttribute="top" secondItem="5lZ-Qb-Est" secondAttribute="bottom" constant="10" id="vJv-7I-sfi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c7y-nM-KiE" secondAttribute="trailing" constant="10" id="xJa-xu-t48"/>
                 <constraint firstItem="LSq-bH-b1v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zRD-77-8Ni"/>

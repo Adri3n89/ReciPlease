@@ -6,12 +6,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoriteController: UITableViewController {
+    
+    var favorite = true
+    var researchResult: APIResponse? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var searchManager: SearchManager!
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchManager = SearchManager(delegate: self)
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
+        tableView.rowHeight = 200
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,26 +30,47 @@ class FavoriteController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let result = researchResult else { return 0 }
+        return result.hits.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let result = researchResult else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
-        cell.recipeNameLabel.text = "Pizza"
-        cell.recipeDetailLabel.text = "Sauce tomate, olive, fromage"
-        cell.likeLabel.text = "2,5k"
-        cell.timeLabel.text = "30m"
-        cell.recipeImageview.image = UIImage(named: "pizza")
+        cell.recipeNameLabel.text = result.hits[indexPath.row].recipe.label
+        var ingredientsString = ""
+        for ingredient in result.hits[indexPath.row].recipe.ingredients {
+            ingredientsString += "\(ingredient.food), "
+        }
+        ingredientsString.removeLast(2)
+        cell.recipeDetailLabel.text = ingredientsString
+        cell.likeLabel.text = "\(result.hits[indexPath.row].recipe.yield)"
+        cell.timeLabel.text = result.hits[indexPath.row].recipe.totalTime == 0 ? "??" : "\(result.hits[indexPath.row].recipe.totalTime)'"
+        cell.recipeImageview.sd_setImage(with: URL(string: result.hits[indexPath.row].recipe.image), placeholderImage: nil,
+                                         options: SDWebImageOptions.highPriority,
+                                         context: nil,
+                                         progress: nil,
+                                         completed: { _, downloadException, _, downloadURL in
+                                     })
         addGradient(view: cell.effectView)
         return cell
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let result = researchResult else { return }
+        let newController = DetailController()
+        newController.recipe = result.hits[indexPath.row].recipe
+        self.navigationController?.pushViewController(newController, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(DetailController(), animated: true)
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !favorite {
+            let position = scrollView.contentOffset.y
+            if position > tableView.contentSize.height - 100 - scrollView.frame.size.height {
+                print("load data")
+                searchManager.loadNewPage(url: (researchResult?.links.next.href)!)
+            }
+        }
     }
     
     func addGradient(view: UIView){
@@ -48,4 +80,14 @@ class FavoriteController: UITableViewController {
         view.layer.addSublayer(gradient)
     }
     
+}
+
+extension FavoriteController: searchManagerDelegate {
+    func searchRecipeSuccess(response: APIResponse) {
+        researchResult!.links.next.href = response.links.next.href
+        for hit in response.hits {
+            researchResult!.hits.append(hit)
+        }
+        tableView.reloadData()
+    }
 }

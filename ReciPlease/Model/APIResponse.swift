@@ -10,8 +10,8 @@ import Foundation
 // MARK: - Search
 struct APIResponse: Codable {
     let count: Int
-    let links: SearchLinks
-    let hits: [Hit]
+    var links: SearchLinks
+    var hits: [Hit]
 
     enum CodingKeys: String, CodingKey {
         case count
@@ -22,26 +22,17 @@ struct APIResponse: Codable {
 
 // MARK: - SearchLinks
 struct SearchLinks: Codable {
-    let next: Next
+    var next: Next
 }
 
 // MARK: - Next
 struct Next: Codable {
-    let href: String
-}
-
-enum Title: String, Codable {
-    case nextPage = "Next page"
-    case titleSelf = "Self"
+    var href: String
 }
 
 // MARK: - Hit
 struct Hit: Codable {
     let recipe: Recipe
-
-    enum CodingKeys: String, CodingKey {
-        case recipe
-    }
 }
 
 // MARK: - Recipe
@@ -53,7 +44,14 @@ struct Recipe: Codable {
     let yield: Int
     let ingredientLines: [String]
     let totalTime: Int
+    let ingredients: [Ingredient]
 }
+
+// MARK: - Ingredient
+struct Ingredient: Codable {
+    let food: String
+}
+
 
 
 
