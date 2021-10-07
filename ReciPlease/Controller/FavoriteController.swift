@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class FavoriteController: UITableViewController {
     
@@ -43,15 +42,8 @@ class FavoriteController: UITableViewController {
             ingredientsString += "\(ingredient.food), "
         }
         ingredientsString.removeLast(2)
-        cell.recipeDetailLabel.text = ingredientsString
-        cell.likeLabel.text = "\(result.hits[indexPath.row].recipe.yield)"
-        cell.timeLabel.text = result.hits[indexPath.row].recipe.totalTime == 0 ? "??" : "\(result.hits[indexPath.row].recipe.totalTime)'"
-        cell.recipeImageview.sd_setImage(with: URL(string: result.hits[indexPath.row].recipe.image), placeholderImage: nil,
-                                         options: SDWebImageOptions.highPriority,
-                                         context: nil,
-                                         progress: nil,
-                                         completed: { _, downloadException, _, downloadURL in
-                                     })
+        let recipe = result.hits[indexPath.row].recipe
+        cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, like: recipe.yield, time: recipe.totalTime)
         addGradient(view: cell.effectView)
         return cell
     }

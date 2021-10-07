@@ -19,7 +19,14 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        ingredientTextField.delegate = self
         searchManager = SearchManager(delegate: self)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func closeKeyboard() {
+        view.endEditing(true)
     }
     
     private func setupTableView() {
@@ -40,6 +47,8 @@ class SearchController: UIViewController {
             if ingredients.count != 0 {
                 emptyFridgeLabel.isHidden = true
             }
+            ingredientTextField.text = ""
+            closeKeyboard()
         }
     }
     
@@ -62,6 +71,14 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ingredients.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
+    }
+    
 }
 
 extension SearchController: searchManagerDelegate {
@@ -71,6 +88,11 @@ extension SearchController: searchManagerDelegate {
         newController.researchResult = response
         self.navigationController?.pushViewController(newController, animated: true)
     }
-    
-    
+}
+
+extension SearchController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        closeKeyboard()
+        return true
+    }
 }
