@@ -17,8 +17,13 @@ class FavoriteViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
         tableView.rowHeight = 200
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        favorites = FavoriteRecipe.all
         guard favorites.count > 0 else {return}
         for recipe in favorites {
+            favoriteRecipes = []
             let request = AF.request(recipe.url!)
             request.responseDecodable(of: Hit.self) { response in
                 guard let recipe = response.value else { return }
@@ -27,10 +32,6 @@ class FavoriteViewController: UITableViewController {
             }
         }
         tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

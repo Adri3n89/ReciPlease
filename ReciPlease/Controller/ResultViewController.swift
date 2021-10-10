@@ -35,15 +35,14 @@ class ResultViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let result = researchResult else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
-        cell.recipeNameLabel.text = result.hits[indexPath.row].recipe.label
         var ingredientsString = ""
         for ingredient in result.hits[indexPath.row].recipe.ingredients {
             ingredientsString += "\(ingredient.food), "
         }
         ingredientsString.removeLast(2)
         let recipe = result.hits[indexPath.row].recipe
-        cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, like: recipe.yield, time: recipe.totalTime)
         cell.effectView.addGradient(colors: [UIColor.clear, UIColor.black])
+        cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, like: recipe.yield, time: recipe.totalTime)
         return cell
     }
     

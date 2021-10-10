@@ -40,15 +40,14 @@ class DetailViewController: UIViewController {
         timeLabel.text = "\(recipe.totalTime)"
     }
     
+    @objc private func setFavorite() {
+        
+    }
     
     private func setupTableview() {
         ingredientTableView.register(UINib.init(nibName: "IngredientCell", bundle: nil), forCellReuseIdentifier: "ingredientCell")
         ingredientTableView.delegate = self
         ingredientTableView.dataSource = self
-    }
-    
-    @objc private func setFavorite() {
-        
     }
 
     @IBAction func getDirectionPressed(sender: Any) {
@@ -60,9 +59,24 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addFavorites(sender: Any) {
-        let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
-        favorite.url = hit?.links.linksSelf.href
-        try? AppDelegate.viewContext.save()
+        var index = 0
+        for recipe in FavoriteRecipe.all {
+            if recipe.url == hit?.links.linksSelf.href {
+                index += 1
+            }
+        }
+        if index == 0 {
+            let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
+            favorite.url = hit?.links.linksSelf.href
+            try? AppDelegate.viewContext.save()
+        } else {
+            let context = AppDelegate.viewContext
+            for recipe in FavoriteRecipe.all {
+                if recipe.url == hit?.links.linksSelf.href {
+                    context.delete(recipe)
+                }
+            }
+        }
     }
     
 }

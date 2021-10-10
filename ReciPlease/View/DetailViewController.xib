@@ -153,6 +153,7 @@
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COJ-Ms-ZCB">
                     <rect key="frame" x="162.66666666666666" y="40" width="89" height="31"/>
+                    <color key="backgroundColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="FAVORITE"/>
                     <connections>

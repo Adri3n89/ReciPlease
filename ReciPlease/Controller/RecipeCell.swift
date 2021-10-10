@@ -18,6 +18,7 @@ class RecipeCell: UITableViewCell {
     @IBOutlet weak var effectView: UIView!
     
     func setup(image: String, name: String, detail: String, like: Int, time: Int) {
+        recipeNameLabel.text = name
         recipeDetailLabel.text = detail
         likeLabel.text = "\(like)"
         timeLabel.text = time == 0 ? "??" : "\(time)"
