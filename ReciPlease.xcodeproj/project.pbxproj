@@ -20,6 +20,8 @@
 		7A5C8ED5270AE367005AB093 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C8ED4270AE367005AB093 /* Tabbar.swift */; };
 		7A5C8ED8270AE401005AB093 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C8ED6270AE401005AB093 /* SearchController.swift */; };
 		7A5C8ED9270AE401005AB093 /* SearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A5C8ED7270AE401005AB093 /* SearchController.xib */; };
+		7A74759727137603004A8706 /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74759527137603004A8706 /* ResultController.swift */; };
+		7A74759827137603004A8706 /* ResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A74759627137603004A8706 /* ResultController.xib */; };
 		7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */; };
 		7A97BA37270C6BBE001DC9E0 /* IngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */; };
 		7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */; };
@@ -64,6 +66,8 @@
 		7A5C8ED4270AE367005AB093 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 		7A5C8ED6270AE401005AB093 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		7A5C8ED7270AE401005AB093 /* SearchController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchController.xib; sourceTree = "<group>"; };
+		7A74759527137603004A8706 /* ResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
+		7A74759627137603004A8706 /* ResultController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultController.xib; sourceTree = "<group>"; };
 		7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientCell.xib; sourceTree = "<group>"; };
 		7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				7A5C8EAB270ADFE6005AB093 /* LaunchScreen.storyboard */,
 				7A5C8ED7270AE401005AB093 /* SearchController.xib */,
+				7A74759627137603004A8706 /* ResultController.xib */,
 				7ABF1A3D270B1BFC007E005F /* FavoriteController.xib */,
 				7ABF1A39270B1A3A007E005F /* RecipeCell.xib */,
 				7A1FC5A6270C49010077392A /* DetailController.xib */,
@@ -173,6 +178,7 @@
 				7A5C8ED4270AE367005AB093 /* Tabbar.swift */,
 				7A5C8ED6270AE401005AB093 /* SearchController.swift */,
 				7ABF1A3C270B1BFC007E005F /* FavoriteController.swift */,
+				7A74759527137603004A8706 /* ResultController.swift */,
 				7ABF1A38270B1A3A007E005F /* RecipeCell.swift */,
 				7A1FC5A5270C49010077392A /* DetailController.swift */,
 				7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */,
@@ -301,6 +307,7 @@
 				7ABF1A3B270B1A3A007E005F /* RecipeCell.xib in Resources */,
 				7ABF1A3F270B1BFC007E005F /* FavoriteController.xib in Resources */,
 				7AF8D1CF270DF584003F4F66 /* WebController.xib in Resources */,
+				7A74759827137603004A8706 /* ResultController.xib in Resources */,
 				7A1FC5A8270C49010077392A /* DetailController.xib in Resources */,
 				7A97BA37270C6BBE001DC9E0 /* IngredientCell.xib in Resources */,
 				7A5C8EAA270ADFE6005AB093 /* Assets.xcassets in Resources */,
@@ -388,6 +395,7 @@
 			files = (
 				7A1FC5A7270C49010077392A /* DetailController.swift in Sources */,
 				7A5C8EA8270ADFE3005AB093 /* ReciPlease.xcdatamodeld in Sources */,
+				7A74759727137603004A8706 /* ResultController.swift in Sources */,
 				7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */,
 				7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */,
 				7A5C8ED8270AE401005AB093 /* SearchController.swift in Sources */,

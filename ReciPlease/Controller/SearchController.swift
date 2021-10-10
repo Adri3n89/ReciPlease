@@ -83,8 +83,7 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchController: searchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse) {
-        let newController = FavoriteController()
-        newController.favorite = false 
+        let newController = ResultController()
         newController.researchResult = response
         self.navigationController?.pushViewController(newController, animated: true)
     }
