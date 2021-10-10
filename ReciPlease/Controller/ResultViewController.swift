@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultController: UITableViewController {
+class ResultViewController: UITableViewController {
         
     var researchResult: SearchResponse? {
         didSet {
@@ -49,7 +49,7 @@ class ResultController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let result = researchResult else { return }
-        let newController = DetailController()
+        let newController = DetailViewController()
         newController.hit = result.hits[indexPath.row]
         self.navigationController?.pushViewController(newController, animated: true)
     }
@@ -64,7 +64,7 @@ class ResultController: UITableViewController {
     
 }
 
-extension ResultController: searchManagerDelegate {
+extension ResultViewController: searchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse) {
         researchResult!.links.next.href = response.links.next.href
         for hit in response.hits {

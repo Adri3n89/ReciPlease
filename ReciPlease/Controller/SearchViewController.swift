@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+class SearchViewController: UIViewController {
 
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var emptyFridgeLabel: UILabel!
@@ -60,7 +60,7 @@ class SearchController: UIViewController {
     
 }
 
-extension SearchController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
     }
@@ -81,15 +81,15 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension SearchController: searchManagerDelegate {
+extension SearchViewController: searchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse) {
-        let newController = ResultController()
+        let newController = ResultViewController()
         newController.researchResult = response
         self.navigationController?.pushViewController(newController, animated: true)
     }
 }
 
-extension SearchController: UITextFieldDelegate {
+extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         closeKeyboard()
         return true

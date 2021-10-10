@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class FavoriteController: UITableViewController {
+class FavoriteViewController: UITableViewController {
 
     var favorites: [FavoriteRecipe] = FavoriteRecipe.all
     var favoriteRecipes: [Hit] = []
@@ -52,7 +52,7 @@ class FavoriteController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newController = DetailController()
+        let newController = DetailViewController()
         newController.hit = favoriteRecipes[indexPath.row]
         self.navigationController?.pushViewController(newController, animated: true)
     }

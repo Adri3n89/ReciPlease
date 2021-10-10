@@ -12,13 +12,13 @@ class Tabbar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let search = SearchController()
+        let search = SearchViewController()
         let searchNav = UINavigationController(rootViewController: search)
         searchNav.title = "Reciplease"
         searchNav.tabBarItem.title = "Search"
         searchNav.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         
-        let favorite = FavoriteController()
+        let favorite = FavoriteViewController()
         let favoriteNav = UINavigationController(rootViewController: favorite)
         favoriteNav.title = "Reciplease"
         favorite.tabBarItem.title = "Favorite"

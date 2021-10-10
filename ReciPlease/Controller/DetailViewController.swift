@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class DetailController: UIViewController {
+class DetailViewController: UIViewController {
     
     @IBOutlet weak var recipeImageview: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
@@ -53,7 +53,7 @@ class DetailController: UIViewController {
 
     @IBAction func getDirectionPressed(sender: Any) {
         guard let recipe = hit?.recipe else { return }
-        let newController = WebController()
+        let newController = WebViewController()
         newController.urlStr = recipe.url
         print(recipe.url)
         self.navigationController?.pushViewController(newController, animated: true)
@@ -67,7 +67,7 @@ class DetailController: UIViewController {
     
 }
 
-extension DetailController: UITableViewDelegate, UITableViewDataSource {
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recipe = hit?.recipe else { return 0 }
         return recipe.ingredientLines.count
