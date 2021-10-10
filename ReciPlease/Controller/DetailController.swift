@@ -17,22 +17,27 @@ class DetailController: UIViewController {
     @IBOutlet weak var effectView: UIView!
     @IBOutlet weak var ingredientTableView: UITableView!
     
-    var recipe: Recipe?
+    var hit: Hit?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGradient(view: effectView)
+        setupOutlets()
+        setupTableview()
+    }
+    
+    private func setupOutlets() {
+        effectView.addGradient(colors: [UIColor.clear, UIColor.darkGray])
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
-        recipeImageview.sd_setImage(with: URL(string: recipe!.image), placeholderImage: nil,
+        guard let recipe = hit?.recipe else { return }
+        recipeImageview.sd_setImage(with: URL(string: recipe.image), placeholderImage: nil,
                                     options: SDWebImageOptions.highPriority,
                                     context: nil,
                                     progress: nil,
                                     completed: { _, downloadException, _, downloadURL in
                                 })
-        recipeNameLabel.text = recipe!.label
-        likeLabel.text = "\(recipe!.yield)"
-        timeLabel.text = "\(recipe!.totalTime)"
-        setupTableview()
+        recipeNameLabel.text = recipe.label
+        likeLabel.text = "\(recipe.yield)"
+        timeLabel.text = "\(recipe.totalTime)"
     }
     
     
@@ -47,30 +52,31 @@ class DetailController: UIViewController {
     }
 
     @IBAction func getDirectionPressed(sender: Any) {
-        guard let recipe = recipe else { return }
+        guard let recipe = hit?.recipe else { return }
         let newController = WebController()
         newController.urlStr = recipe.url
         print(recipe.url)
         self.navigationController?.pushViewController(newController, animated: true)
     }
     
-    func addGradient(view: UIView){
-        let gradient:CAGradientLayer = CAGradientLayer()
-        gradient.frame.size = view.frame.size
-        gradient.colors = [UIColor.clear.cgColor, UIColor.darkGray.cgColor] //Or any colors
-        view.layer.addSublayer(gradient)
+    @IBAction func addFavorites(sender: Any) {
+        let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
+        favorite.url = hit?.links.linksSelf.href
+        try? AppDelegate.viewContext.save()
     }
-
+    
 }
 
 extension DetailController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (recipe?.ingredientLines.count)!
+        guard let recipe = hit?.recipe else { return 0 }
+        return recipe.ingredientLines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
-        cell.ingredientLabel.text = "- " + (recipe?.ingredientLines[indexPath.row])!
+        guard let recipe = hit?.recipe else { return UITableViewCell() }
+        cell.ingredientLabel.text = "- " + recipe.ingredientLines[indexPath.row]
         return cell
     }
     

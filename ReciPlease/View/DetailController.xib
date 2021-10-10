@@ -51,7 +51,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👍" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-Uo-Bvv">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍽" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-Uo-Bvv">
                                             <rect key="frame" x="31.333333333333314" y="0.0" width="24.666666666666671" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -151,6 +151,14 @@
                         <constraint firstItem="kyW-ZK-nLz" firstAttribute="top" secondItem="6PU-Z1-VYf" secondAttribute="bottom" constant="10" id="tPV-hs-vsO"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COJ-Ms-ZCB">
+                    <rect key="frame" x="162.66666666666666" y="40" width="89" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="FAVORITE"/>
+                    <connections>
+                        <action selector="addFavoritesWithSender:" destination="-1" eventType="touchUpInside" id="Hqk-97-hC0"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -167,7 +175,9 @@
                 <constraint firstItem="LSq-bH-b1v" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VOa-Jb-Eb9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u9p-xT-5fa" secondAttribute="bottom" constant="20" id="fW0-oh-I21"/>
                 <constraint firstItem="Q5v-f3-4l8" firstAttribute="bottom" secondItem="5lZ-Qb-Est" secondAttribute="bottom" constant="-20" id="iEh-kD-o5W"/>
+                <constraint firstItem="COJ-Ms-ZCB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ieY-bb-zQM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u9p-xT-5fa" secondAttribute="trailing" id="nga-k0-An3"/>
+                <constraint firstItem="COJ-Ms-ZCB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="oZ2-JE-JrS"/>
                 <constraint firstItem="5lZ-Qb-Est" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sve-sf-4fV"/>
                 <constraint firstItem="Q5v-f3-4l8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="v1o-dw-XU4"/>
                 <constraint firstItem="u9p-xT-5fa" firstAttribute="top" secondItem="5lZ-Qb-Est" secondAttribute="bottom" constant="10" id="vJv-7I-sfi"/>

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol searchManagerDelegate {
-    func searchRecipeSuccess(response: APIResponse)
+    func searchRecipeSuccess(response: SearchResponse)
 }
 
 class SearchManager {
@@ -30,7 +30,7 @@ class SearchManager {
         let appKey = "app_key=c64f200a51df3bf8200bf371740f5673"
         let request = AF.request("https://api.edamam.com/api/recipes/v2?type=public&q=\(ingredientsString)&\(appID)&\(appKey)")
         
-        request.responseDecodable(of: APIResponse.self) { response in
+        request.responseDecodable(of: SearchResponse.self) { response in
             guard let recipe = response.value else { return }
             self.delegate.searchRecipeSuccess(response: recipe)
             
@@ -39,7 +39,7 @@ class SearchManager {
     
     func loadNewPage(url: String) {
         let request = AF.request(url)
-        request.responseDecodable(of: APIResponse.self) { response in
+        request.responseDecodable(of: SearchResponse.self) { response in
             guard let recipe = response.value else { return }
             self.delegate.searchRecipeSuccess(response: recipe)
         }

@@ -10,6 +10,7 @@
 		70F6A2E258FC3D23CC773EEE /* Pods_ReciPleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7C11492C390BF768E0ADD3 /* Pods_ReciPleaseTests.framework */; };
 		7A1FC5A7270C49010077392A /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FC5A5270C49010077392A /* DetailController.swift */; };
 		7A1FC5A8270C49010077392A /* DetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1FC5A6270C49010077392A /* DetailController.xib */; };
+		7A46C5E52711CFFC0077402E /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */; };
 		7A5C8E9E270ADFE3005AB093 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C8E9D270ADFE3005AB093 /* AppDelegate.swift */; };
 		7A5C8EA0270ADFE3005AB093 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C8E9F270ADFE3005AB093 /* SceneDelegate.swift */; };
 		7A5C8EA8270ADFE3005AB093 /* ReciPlease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A5C8EA6270ADFE3005AB093 /* ReciPlease.xcdatamodeld */; };
@@ -21,12 +22,13 @@
 		7A5C8ED9270AE401005AB093 /* SearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A5C8ED7270AE401005AB093 /* SearchController.xib */; };
 		7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */; };
 		7A97BA37270C6BBE001DC9E0 /* IngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */; };
-		7A97BA39270C7A57001DC9E0 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA38270C7A56001DC9E0 /* APIResponse.swift */; };
+		7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */; };
 		7A97BA3B270C8B11001DC9E0 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */; };
 		7ABF1A3A270B1A3A007E005F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF1A38270B1A3A007E005F /* RecipeCell.swift */; };
 		7ABF1A3B270B1A3A007E005F /* RecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ABF1A39270B1A3A007E005F /* RecipeCell.xib */; };
 		7ABF1A3E270B1BFC007E005F /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF1A3C270B1BFC007E005F /* FavoriteController.swift */; };
 		7ABF1A3F270B1BFC007E005F /* FavoriteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ABF1A3D270B1BFC007E005F /* FavoriteController.xib */; };
+		7AC0C057270F1A160070B726 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0C056270F1A160070B726 /* Extensions.swift */; };
 		7AF8D1C9270D831E003F4F66 /* datas.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8D1C8270D831E003F4F66 /* datas.json */; };
 		7AF8D1CE270DF584003F4F66 /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8D1CC270DF584003F4F66 /* WebController.swift */; };
 		7AF8D1CF270DF584003F4F66 /* WebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8D1CD270DF584003F4F66 /* WebController.xib */; };
@@ -49,6 +51,7 @@
 		3CC7C888498C0E1B33324B7A /* Pods-ReciPlease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReciPlease.debug.xcconfig"; path = "Target Support Files/Pods-ReciPlease/Pods-ReciPlease.debug.xcconfig"; sourceTree = "<group>"; };
 		7A1FC5A5270C49010077392A /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		7A1FC5A6270C49010077392A /* DetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailController.xib; sourceTree = "<group>"; };
+		7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipe.swift; sourceTree = "<group>"; };
 		7A5C8E9A270ADFE3005AB093 /* ReciPlease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReciPlease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A5C8E9D270ADFE3005AB093 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A5C8E9F270ADFE3005AB093 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,12 +66,13 @@
 		7A5C8ED7270AE401005AB093 /* SearchController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchController.xib; sourceTree = "<group>"; };
 		7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientCell.xib; sourceTree = "<group>"; };
-		7A97BA38270C7A56001DC9E0 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		7ABF1A38270B1A3A007E005F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		7ABF1A39270B1A3A007E005F /* RecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCell.xib; sourceTree = "<group>"; };
 		7ABF1A3C270B1BFC007E005F /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
 		7ABF1A3D270B1BFC007E005F /* FavoriteController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteController.xib; sourceTree = "<group>"; };
+		7AC0C056270F1A160070B726 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7AF8D1C8270D831E003F4F66 /* datas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = datas.json; sourceTree = "<group>"; };
 		7AF8D1CC270DF584003F4F66 /* WebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
 		7AF8D1CD270DF584003F4F66 /* WebController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebController.xib; sourceTree = "<group>"; };
@@ -143,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */,
-				7A97BA38270C7A56001DC9E0 /* APIResponse.swift */,
+				7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */,
+				7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				7A1FC5A5270C49010077392A /* DetailController.swift */,
 				7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */,
 				7AF8D1CC270DF584003F4F66 /* WebController.swift */,
+				7AC0C056270F1A160070B726 /* Extensions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -383,11 +389,13 @@
 				7A1FC5A7270C49010077392A /* DetailController.swift in Sources */,
 				7A5C8EA8270ADFE3005AB093 /* ReciPlease.xcdatamodeld in Sources */,
 				7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */,
-				7A97BA39270C7A57001DC9E0 /* APIResponse.swift in Sources */,
+				7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */,
 				7A5C8ED8270AE401005AB093 /* SearchController.swift in Sources */,
 				7ABF1A3A270B1A3A007E005F /* RecipeCell.swift in Sources */,
 				7A5C8E9E270ADFE3005AB093 /* AppDelegate.swift in Sources */,
 				7A97BA3B270C8B11001DC9E0 /* SearchManager.swift in Sources */,
+				7AC0C057270F1A160070B726 /* Extensions.swift in Sources */,
+				7A46C5E52711CFFC0077402E /* FavoriteRecipe.swift in Sources */,
 				7AF8D1CE270DF584003F4F66 /* WebController.swift in Sources */,
 				7A5C8EA0270ADFE3005AB093 /* SceneDelegate.swift in Sources */,
 				7A5C8ED5270AE367005AB093 /* Tabbar.swift in Sources */,

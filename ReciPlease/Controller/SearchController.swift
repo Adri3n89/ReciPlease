@@ -82,7 +82,7 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchController: searchManagerDelegate {
-    func searchRecipeSuccess(response: APIResponse) {
+    func searchRecipeSuccess(response: SearchResponse) {
         let newController = FavoriteController()
         newController.favorite = false 
         newController.researchResult = response
