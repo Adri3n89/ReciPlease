@@ -37,7 +37,11 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func searchPressed(_ sender: Any) {
-        searchManager.searchRecipe(ingredients: ingredients)
+        guard ingredients.count > 0 else {
+            self.alert(text: "please add at least 1 ingredient")
+            return
+        }
+            searchManager.searchRecipe(ingredients: ingredients)
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {

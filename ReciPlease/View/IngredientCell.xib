@@ -17,18 +17,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc5-QI-4J3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                        <rect key="frame" x="10" y="0.0" width="310" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="gc5-QI-4J3" secondAttribute="trailing" id="1o4-3D-wNQ"/>
+                    <constraint firstItem="gc5-QI-4J3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ndd-uZ-E21"/>
                     <constraint firstItem="gc5-QI-4J3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OAU-eC-yn4"/>
                     <constraint firstAttribute="bottom" secondItem="gc5-QI-4J3" secondAttribute="bottom" id="ecv-7S-IUe"/>
-                    <constraint firstItem="gc5-QI-4J3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sMc-WY-oWf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -28,6 +28,7 @@ class RecipeCell: UITableViewCell {
                                          progress: nil,
                                          completed: { _, downloadException, _, downloadURL in
                                      })
+        effectView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 15)
     }
     
 }

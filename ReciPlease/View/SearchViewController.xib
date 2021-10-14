@@ -21,6 +21,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-BB-Ac9">
+                    <rect key="frame" x="20" y="130" width="374" height="506"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vxl-e4-zJg">
                     <rect key="frame" x="20" y="20" width="374" height="100"/>
                     <subviews>
@@ -31,7 +40,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aKO-MA-uri">
-                            <rect key="frame" x="48" y="54" width="278.33333333333331" height="46"/>
+                            <rect key="frame" x="32" y="54" width="310" height="46"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, Cheese, Sausages..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oq6-cS-5Gs">
                                     <rect key="frame" x="0.0" y="6" width="210.33333333333334" height="34"/>
@@ -39,8 +48,8 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Esf-EU-ceU">
-                                    <rect key="frame" x="218.33333333333331" y="8" width="60" height="30"/>
-                                    <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="250" y="8" width="60" height="30"/>
+                                    <color key="backgroundColor" red="0.32199722530000002" green="0.70999318359999997" blue="0.69019812349999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="DbF-eE-kcU"/>
                                         <constraint firstAttribute="height" constant="30" id="NKw-Lh-u6B"/>
@@ -84,7 +93,7 @@
                                         <constraint firstAttribute="width" constant="250" id="EWB-XG-grm"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-Le-0C6">
@@ -110,13 +119,14 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WQa-fI-6UI">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WQa-fI-6UI">
                             <rect key="frame" x="0.0" y="50" width="374" height="436"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keD-2i-Ovx">
-                            <rect key="frame" x="10" y="506" width="354" height="70"/>
-                            <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="506" width="374" height="70"/>
+                            <color key="backgroundColor" red="0.32156862745098036" green="0.70980392156862748" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="QEg-6N-CsK"/>
                             </constraints>
@@ -136,36 +146,41 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="keD-2i-Ovx" firstAttribute="leading" secondItem="kLY-XS-XAf" secondAttribute="leading" id="5nm-pj-cus"/>
                         <constraint firstItem="keD-2i-Ovx" firstAttribute="top" secondItem="WQa-fI-6UI" secondAttribute="bottom" constant="20" id="CBj-Vg-ItU"/>
+                        <constraint firstAttribute="trailing" secondItem="keD-2i-Ovx" secondAttribute="trailing" id="CPe-wK-W8H"/>
                         <constraint firstItem="WQa-fI-6UI" firstAttribute="leading" secondItem="kLY-XS-XAf" secondAttribute="leading" id="CxK-lF-dek"/>
                         <constraint firstAttribute="trailing" secondItem="WQa-fI-6UI" secondAttribute="trailing" id="RK5-Hm-pbi"/>
-                        <constraint firstItem="keD-2i-Ovx" firstAttribute="leading" secondItem="kLY-XS-XAf" secondAttribute="leading" constant="10" id="UAh-QA-4SO"/>
-                        <constraint firstAttribute="trailing" secondItem="keD-2i-Ovx" secondAttribute="trailing" constant="10" id="euJ-No-49y"/>
                         <constraint firstItem="WQa-fI-6UI" firstAttribute="top" secondItem="SId-IG-B5f" secondAttribute="bottom" constant="20" id="m0s-2X-tuT"/>
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your fridge is empty, please go buy some food !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVy-uf-Rda">
                     <rect key="frame" x="103.66666666666669" y="367" width="207" height="82"/>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.78137165310000001" green="0.89771252869999996" blue="0.91372960810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="Vxl-e4-zJg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7uQ-uN-nop"/>
                 <constraint firstItem="Vxl-e4-zJg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="C5f-FT-KdA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kLY-XS-XAf" secondAttribute="bottom" constant="20" id="Enx-GH-LUv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kLY-XS-XAf" secondAttribute="trailing" constant="20" id="J99-TV-JBf"/>
                 <constraint firstItem="sVy-uf-Rda" firstAttribute="centerX" secondItem="WQa-fI-6UI" secondAttribute="centerX" id="VFd-te-cBj"/>
+                <constraint firstItem="kLY-XS-XAf" firstAttribute="bottom" secondItem="0dp-BB-Ac9" secondAttribute="bottom" constant="80" id="Wlc-1y-49B"/>
+                <constraint firstItem="SId-IG-B5f" firstAttribute="width" secondItem="aKO-MA-uri" secondAttribute="width" id="aJR-Fj-RxD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0dp-BB-Ac9" secondAttribute="trailing" constant="20" id="jnM-r3-ZbA"/>
+                <constraint firstItem="0dp-BB-Ac9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="lKz-Kd-ec2"/>
                 <constraint firstItem="sVy-uf-Rda" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="p6v-ao-Y2Z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vxl-e4-zJg" secondAttribute="trailing" constant="20" id="qdZ-95-ehj"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="top" secondItem="Vxl-e4-zJg" secondAttribute="bottom" constant="20" id="uJc-U5-mcD"/>
                 <constraint firstItem="sVy-uf-Rda" firstAttribute="centerY" secondItem="WQa-fI-6UI" secondAttribute="centerY" id="v4A-e3-0ky"/>
+                <constraint firstItem="0dp-BB-Ac9" firstAttribute="top" secondItem="Vxl-e4-zJg" secondAttribute="bottom" constant="10" id="vlr-BU-ebs"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wSK-LW-rYd"/>
             </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
+            <point key="canvasLocation" x="137.68115942028987" y="136.14130434782609"/>
         </view>
     </objects>
 </document>

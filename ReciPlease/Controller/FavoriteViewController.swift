@@ -10,7 +10,7 @@ import Alamofire
 
 class FavoriteViewController: UITableViewController {
 
-    var favorites: [FavoriteRecipe] = FavoriteRecipe.all
+    var favorites: [FavoriteRecipe] = []
     var favoriteRecipes: [Hit] = []
         
     override func viewDidLoad() {
