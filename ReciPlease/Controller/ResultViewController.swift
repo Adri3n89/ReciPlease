@@ -43,6 +43,9 @@ class ResultViewController: UITableViewController {
         let recipe = result.hits[indexPath.row].recipe
         cell.effectView.addGradient(colors: [UIColor.clear, UIColor.black])
         cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
+        if indexPath.row == result.hits.count - 3 {
+            searchManager.loadNewPage(url: (researchResult?.links.next.href)!)
+        }
         return cell
     }
     
@@ -51,14 +54,6 @@ class ResultViewController: UITableViewController {
         let newController = DetailViewController()
         newController.hit = result.hits[indexPath.row]
         self.navigationController?.pushViewController(newController, animated: true)
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > tableView.contentSize.height - 100 - scrollView.frame.size.height {
-            print("load data")
-            searchManager.loadNewPage(url: (researchResult?.links.next.href)!)
-        }
     }
     
 }

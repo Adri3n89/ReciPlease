@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension UIView {
     func addGradient(colors: [UIColor]) {
@@ -29,5 +30,16 @@ extension UIViewController {
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension UIImageView {
+    func setImage(url: URL) {
+        self.sd_setImage(with: url, placeholderImage: nil,
+                                         options: SDWebImageOptions.highPriority,
+                                         context: nil,
+                                         progress: nil,
+                                         completed: { _, downloadException, _, downloadURL in
+                                     })
     }
 }

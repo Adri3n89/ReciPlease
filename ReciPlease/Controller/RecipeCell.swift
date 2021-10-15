@@ -22,12 +22,7 @@ class RecipeCell: UITableViewCell {
         recipeDetailLabel.text = detail
         yieldLabel.text = "\(yield)"
         timeLabel.text = time == 0 ? "??" : "\(time)"
-        recipeImageview.sd_setImage(with: URL(string: image), placeholderImage: nil,
-                                         options: SDWebImageOptions.highPriority,
-                                         context: nil,
-                                         progress: nil,
-                                         completed: { _, downloadException, _, downloadURL in
-                                     })
+        recipeImageview.setImage(url: URL(string: image)!)
         effectView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 15)
     }
     
