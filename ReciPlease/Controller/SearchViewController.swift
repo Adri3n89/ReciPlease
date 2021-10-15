@@ -91,6 +91,10 @@ extension SearchViewController: searchManagerDelegate {
         newController.researchResult = response
         self.navigationController?.pushViewController(newController, animated: true)
     }
+    
+    func searchRecipeError(error: String) {
+        self.alert(text: error)
+    }
 }
 
 extension SearchViewController: UITextFieldDelegate {

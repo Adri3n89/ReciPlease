@@ -42,7 +42,7 @@ class ResultViewController: UITableViewController {
         ingredientsString.removeLast(2)
         let recipe = result.hits[indexPath.row].recipe
         cell.effectView.addGradient(colors: [UIColor.clear, UIColor.black])
-        cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, like: recipe.yield, time: recipe.totalTime)
+        cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
         return cell
     }
     
@@ -70,5 +70,9 @@ extension ResultViewController: searchManagerDelegate {
             researchResult!.hits.append(hit)
         }
         tableView.reloadData()
+    }
+    
+    func searchRecipeError(error: String) {
+        self.alert(text: error)
     }
 }

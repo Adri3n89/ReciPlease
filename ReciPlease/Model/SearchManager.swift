@@ -10,6 +10,7 @@ import Alamofire
 
 protocol searchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse)
+    func searchRecipeError(error: String)
 }
 
 class SearchManager {
@@ -31,7 +32,10 @@ class SearchManager {
         let request = AF.request("https://api.edamam.com/api/recipes/v2?type=public&q=\(ingredientsString)&\(appID)&\(appKey)")
         
         request.responseDecodable(of: SearchResponse.self) { response in
-            guard let recipe = response.value else { return }
+            guard let recipe = response.value else {
+                self.delegate.searchRecipeError(error: response.error!.localizedDescription)
+                return
+            }
             self.delegate.searchRecipeSuccess(response: recipe)
             
         }
