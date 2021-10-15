@@ -16,7 +16,6 @@ class FavoriteViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
-        tableView.rowHeight = 200
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,15 +39,10 @@ class FavoriteViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
-        cell.recipeNameLabel.text = favoriteRecipes[indexPath.row].recipe.label
-        var ingredientsString = ""
-        for ingredient in favoriteRecipes[indexPath.row].recipe.ingredients {
-            ingredientsString += "\(ingredient.food), "
-        }
-        ingredientsString.removeLast(2)
+        let ingredients = favoriteRecipes[indexPath.row].recipe.ingredients.map { $0.food }
+        let ingredientsString = ingredients.joined(separator: ", ")
         let recipe = favoriteRecipes[indexPath.row].recipe
         cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
-        cell.effectView.addGradient(colors: [UIColor.clear, UIColor.black])
         return cell
     }
     

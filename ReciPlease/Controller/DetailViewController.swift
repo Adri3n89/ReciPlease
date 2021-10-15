@@ -10,12 +10,12 @@ import SDWebImage
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var recipeImageview: UIImageView!
-    @IBOutlet weak var recipeNameLabel: UILabel!
-    @IBOutlet weak var likeLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var effectView: UIView!
-    @IBOutlet weak var ingredientTableView: UITableView!
+    @IBOutlet private weak var recipeImageview: UIImageView!
+    @IBOutlet private weak var recipeNameLabel: UILabel!
+    @IBOutlet private weak var likeLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var effectView: UIView!
+    @IBOutlet private weak var ingredientTableView: UITableView!
     
     var hit: Hit?
 
@@ -29,12 +29,7 @@ class DetailViewController: UIViewController {
         effectView.addGradient(colors: [UIColor.clear, UIColor.darkGray])
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
         guard let recipe = hit?.recipe else { return }
-        recipeImageview.sd_setImage(with: URL(string: recipe.image), placeholderImage: nil,
-                                    options: SDWebImageOptions.highPriority,
-                                    context: nil,
-                                    progress: nil,
-                                    completed: { _, downloadException, _, downloadURL in
-                                })
+        recipeImageview.setImage(url: recipe.image)
         recipeNameLabel.text = recipe.label
         likeLabel.text = "\(recipe.yield)"
         timeLabel.text = "\(recipe.totalTime)"
@@ -54,18 +49,12 @@ class DetailViewController: UIViewController {
         guard let recipe = hit?.recipe else { return }
         let newController = WebViewController()
         newController.urlStr = recipe.url
-        print(recipe.url)
         self.navigationController?.pushViewController(newController, animated: true)
     }
     
     @IBAction func addFavorites(sender: Any) {
-        var index = 0
-        for recipe in FavoriteRecipe.all {
-            if recipe.url == hit?.links.linksSelf.href {
-                index += 1
-            }
-        }
-        if index == 0 {
+        let favorites = FavoriteRecipe.all.filter { $0.url == hit?.links.linksSelf.href }
+        if favorites.count == 0 {
             let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
             favorite.url = hit?.links.linksSelf.href
             try? AppDelegate.viewContext.save()
@@ -90,7 +79,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
         guard let recipe = hit?.recipe else { return UITableViewCell() }
-        cell.ingredientLabel.text = "- " + recipe.ingredientLines[indexPath.row]
+        cell.setupLabel(ingredient: recipe.ingredientLines[indexPath.row])
         return cell
     }
     

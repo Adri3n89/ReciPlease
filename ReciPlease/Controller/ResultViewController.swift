@@ -20,7 +20,6 @@ class ResultViewController: UITableViewController {
         super.viewDidLoad()
         searchManager = SearchManager(delegate: self)
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
-        tableView.rowHeight = 200
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,13 +34,9 @@ class ResultViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let result = researchResult else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
-        var ingredientsString = ""
-        for ingredient in result.hits[indexPath.row].recipe.ingredients {
-            ingredientsString += "\(ingredient.food), "
-        }
-        ingredientsString.removeLast(2)
+        let ingredients = result.hits[indexPath.row].recipe.ingredients.map { $0.food }
+        let ingredientsString = ingredients.joined(separator: ", ")
         let recipe = result.hits[indexPath.row].recipe
-        cell.effectView.addGradient(colors: [UIColor.clear, UIColor.black])
         cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
         if indexPath.row == result.hits.count - 3 {
             searchManager.loadNewPage(url: (researchResult?.links.next.href)!)
@@ -61,9 +56,7 @@ class ResultViewController: UITableViewController {
 extension ResultViewController: searchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse) {
         researchResult!.links.next.href = response.links.next.href
-        for hit in response.hits {
-            researchResult!.hits.append(hit)
-        }
+        researchResult!.hits += response.hits.map{ $0 }
         tableView.reloadData()
     }
     

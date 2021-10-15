@@ -9,9 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var ingredientTextField: UITextField!
-    @IBOutlet weak var emptyFridgeLabel: UILabel!
-    @IBOutlet weak var ingredientTableView: UITableView!
+    @IBOutlet private weak var ingredientTextField: UITextField!
+    @IBOutlet private weak var emptyFridgeLabel: UILabel!
+    @IBOutlet private weak var ingredientTableView: UITableView!
     
     var ingredients: [String] = []
     var searchManager: SearchManager!
@@ -33,7 +33,6 @@ class SearchViewController: UIViewController {
         ingredientTableView.delegate = self
         ingredientTableView.dataSource = self
         ingredientTableView.register(UINib.init(nibName: "IngredientCell", bundle: nil), forCellReuseIdentifier: "ingredientCell")
-
     }
 
     @IBAction func searchPressed(_ sender: Any) {
@@ -71,7 +70,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
-        cell.ingredientLabel.text = "- " + ingredients[indexPath.row]
+        cell.setupLabel(ingredient: ingredients[indexPath.row])
         return cell
     }
     

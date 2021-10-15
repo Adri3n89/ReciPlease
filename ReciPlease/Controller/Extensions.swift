@@ -34,8 +34,8 @@ extension UIViewController {
 }
 
 extension UIImageView {
-    func setImage(url: URL) {
-        self.sd_setImage(with: url, placeholderImage: nil,
+    func setImage(url: String) {
+        self.sd_setImage(with: URL(string: url), placeholderImage: nil,
                                          options: SDWebImageOptions.highPriority,
                                          context: nil,
                                          progress: nil,

@@ -37,7 +37,6 @@ class SearchManager {
                 return
             }
             self.delegate.searchRecipeSuccess(response: recipe)
-            
         }
     }
     
@@ -48,9 +47,5 @@ class SearchManager {
             self.delegate.searchRecipeSuccess(response: recipe)
         }
     }
-    
-    
-    
-    
-    
+
 }
