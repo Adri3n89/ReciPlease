@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class FavoriteViewController: UITableViewController {
 
@@ -63,10 +62,14 @@ class FavoriteViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            FavoriteRecipe.deleteRecipe(uri: favoriteRecipes[indexPath.row].recipe.uri)
-            favoriteRecipes.remove(at: indexPath.row)
-            tableView.reloadData()
+        if favoriteRecipes.count > 0 {
+            if editingStyle == .delete {
+                FavoriteRecipe.deleteRecipe(uri: favoriteRecipes[indexPath.row].recipe.uri)
+                favoriteRecipes.remove(at: indexPath.row)
+                tableView.reloadData()
+            }
+        } else {
+            // sinon ne pas pouvoir swipe la cell ??
         }
     }
     

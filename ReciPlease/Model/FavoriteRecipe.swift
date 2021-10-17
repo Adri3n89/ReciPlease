@@ -24,6 +24,7 @@ class FavoriteRecipe: NSManagedObject {
                 context.delete(recipe)
             }
         }
+        try? context.save()
     }
     
 }
