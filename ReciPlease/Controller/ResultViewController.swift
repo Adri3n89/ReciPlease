@@ -53,7 +53,7 @@ class ResultViewController: UITableViewController {
     
 }
 
-extension ResultViewController: searchManagerDelegate {
+extension ResultViewController: SearchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse) {
         researchResult!.links.next.href = response.links.next.href
         researchResult!.hits += response.hits.map{ $0 }

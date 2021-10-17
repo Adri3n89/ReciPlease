@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         setupOutlets()
         setupTableview()
+        effectView.addGradient(colors: [.yellow, .red])
     }
     
     private func setupOutlets() {
@@ -53,20 +54,24 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addFavorites(sender: Any) {
-        let favorites = FavoriteRecipe.all.filter { $0.url == hit?.links.linksSelf.href }
+        let favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
         if favorites.count == 0 {
             let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
-            favorite.url = hit?.links.linksSelf.href
+            favorite.uri = hit?.recipe.uri
             try? AppDelegate.viewContext.save()
         } else {
-            let context = AppDelegate.viewContext
-            for recipe in FavoriteRecipe.all {
-                if recipe.url == hit?.links.linksSelf.href {
-                    context.delete(recipe)
-                }
-            }
+            FavoriteRecipe.deleteRecipe(uri: hit!.recipe.uri)
+                    // delete all FavoriteRecipe in CoreData
+//                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FavoriteRecipe")
+//                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//
+//                    do {
+//                        try context.execute(deleteRequest)
+//                    } catch let error as NSError {
+//                    }
         }
     }
+    
     
 }
 

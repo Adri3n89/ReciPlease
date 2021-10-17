@@ -8,28 +8,22 @@
 import Foundation
 import Alamofire
 
-protocol searchManagerDelegate {
+protocol SearchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse)
     func searchRecipeError(error: String)
 }
 
 class SearchManager {
     
-    var delegate: searchManagerDelegate
+    var delegate: SearchManagerDelegate
     
-    init(delegate: searchManagerDelegate) {
+    init(delegate: SearchManagerDelegate) {
         self.delegate = delegate
     }
     
     func searchRecipe(ingredients: [String]) {
-        var ingredientsString = ""
-        for ingredient in ingredients {
-            ingredientsString += ingredient + ","
-        }
-        ingredientsString.removeLast()
-        let appID = "app_id=534c8951"
-        let appKey = "app_key=c64f200a51df3bf8200bf371740f5673"
-        let request = AF.request("https://api.edamam.com/api/recipes/v2?type=public&q=\(ingredientsString)&\(appID)&\(appKey)")
+        let ingredientsString = ingredients.joined(separator: ",")
+        let request = AF.request("\(Constante.searchURL)\(ingredientsString)")
         
         request.responseDecodable(of: SearchResponse.self) { response in
             guard let recipe = response.value else {

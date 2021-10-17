@@ -26,8 +26,8 @@ extension UIView {
 
 extension UIViewController {
     func alert(text: String) {
-        let alert = UIAlertController(title: "Error", message: text, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: Constante.error, message: text, preferredStyle: .alert)
+        let action = UIAlertAction(title: Constante.ok, style: .cancel, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }

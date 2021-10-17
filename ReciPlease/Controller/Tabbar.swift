@@ -14,15 +14,15 @@ class Tabbar: UITabBarController {
 
         let search = SearchViewController()
         let searchNav = UINavigationController(rootViewController: search)
-        searchNav.title = "Reciplease"
-        searchNav.tabBarItem.title = "Search"
-        searchNav.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        searchNav.title = Constante.reciPlease
+        searchNav.tabBarItem.title = Constante.search
+        searchNav.tabBarItem.image = UIImage(systemName: Constante.searchIcon)
         
         let favorite = FavoriteViewController()
         let favoriteNav = UINavigationController(rootViewController: favorite)
-        favoriteNav.title = "Reciplease"
-        favorite.tabBarItem.title = "Favorite"
-        favorite.tabBarItem.image = UIImage(systemName: "star.fill")
+        favoriteNav.title = Constante.reciPlease
+        favorite.tabBarItem.title = Constante.favorite
+        favorite.tabBarItem.image = UIImage(systemName: Constante.favoriteIcon)
         
         viewControllers = [searchNav, favoriteNav]
         tabBar.clipsToBounds = true

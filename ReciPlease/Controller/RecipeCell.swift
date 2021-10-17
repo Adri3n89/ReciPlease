@@ -23,8 +23,10 @@ class RecipeCell: UITableViewCell {
         yieldLabel.text = "\(yield)"
         timeLabel.text = time == 0 ? "??" : "\(time)"
         recipeImageview.setImage(url: image)
+        recipeImageview.layer.borderColor = UIColor.black.cgColor
+        recipeImageview.layer.borderWidth = 3
         effectView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 15)
-        effectView.addGradient(colors: [UIColor.clear, UIColor.black])
+        effectView.addGradient(colors: [UIColor.clear, UIColor.darkGray])
     }
     
 }

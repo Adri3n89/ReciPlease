@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		70F6A2E258FC3D23CC773EEE /* Pods_ReciPleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7C11492C390BF768E0ADD3 /* Pods_ReciPleaseTests.framework */; };
+		7A183803271A19E20065375F /* Constante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A183802271A19E20065375F /* Constante.swift */; };
+		7A183805271A21630065375F /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A183804271A21630065375F /* FavoriteManager.swift */; };
 		7A1FC5A7270C49010077392A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FC5A5270C49010077392A /* DetailViewController.swift */; };
 		7A1FC5A8270C49010077392A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1FC5A6270C49010077392A /* DetailViewController.xib */; };
 		7A46C5E52711CFFC0077402E /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */; };
@@ -51,6 +53,8 @@
 		1DE661550687649F74AD1879 /* Pods-ReciPleaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReciPleaseTests.debug.xcconfig"; path = "Target Support Files/Pods-ReciPleaseTests/Pods-ReciPleaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		26440BF754676E7DB9F24534 /* Pods-ReciPleaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReciPleaseTests.release.xcconfig"; path = "Target Support Files/Pods-ReciPleaseTests/Pods-ReciPleaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		3CC7C888498C0E1B33324B7A /* Pods-ReciPlease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReciPlease.debug.xcconfig"; path = "Target Support Files/Pods-ReciPlease/Pods-ReciPlease.debug.xcconfig"; sourceTree = "<group>"; };
+		7A183802271A19E20065375F /* Constante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constante.swift; sourceTree = "<group>"; };
+		7A183804271A21630065375F /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
 		7A1FC5A5270C49010077392A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7A1FC5A6270C49010077392A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipe.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */,
+				7A183804271A21630065375F /* FavoriteManager.swift */,
 				7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */,
 				7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */,
 			);
@@ -194,6 +199,7 @@
 				7A5C8E9D270ADFE3005AB093 /* AppDelegate.swift */,
 				7A5C8E9F270ADFE3005AB093 /* SceneDelegate.swift */,
 				7A5C8EA9270ADFE6005AB093 /* Assets.xcassets */,
+				7A183802271A19E20065375F /* Constante.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -399,9 +405,11 @@
 				7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */,
 				7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */,
 				7A5C8ED8270AE401005AB093 /* SearchViewController.swift in Sources */,
+				7A183805271A21630065375F /* FavoriteManager.swift in Sources */,
 				7ABF1A3A270B1A3A007E005F /* RecipeCell.swift in Sources */,
 				7A5C8E9E270ADFE3005AB093 /* AppDelegate.swift in Sources */,
 				7A97BA3B270C8B11001DC9E0 /* SearchManager.swift in Sources */,
+				7A183803271A19E20065375F /* Constante.swift in Sources */,
 				7AC0C057270F1A160070B726 /* Extensions.swift in Sources */,
 				7A46C5E52711CFFC0077402E /* FavoriteRecipe.swift in Sources */,
 				7AF8D1CE270DF584003F4F66 /* WebViewController.swift in Sources */,

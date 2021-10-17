@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
 
     @IBAction func searchPressed(_ sender: Any) {
         guard ingredients.count > 0 else {
-            self.alert(text: "please add at least 1 ingredient")
+            self.alert(text: Constante.needOneIngredient)
             return
         }
             searchManager.searchRecipe(ingredients: ingredients)
@@ -84,7 +84,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension SearchViewController: searchManagerDelegate {
+extension SearchViewController: SearchManagerDelegate {
     func searchRecipeSuccess(response: SearchResponse) {
         let newController = ResultViewController()
         newController.researchResult = response

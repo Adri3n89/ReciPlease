@@ -16,4 +16,14 @@ class FavoriteRecipe: NSManagedObject {
         }
         return favoriteRecipes
     }
+    
+    static func deleteRecipe(uri: String) {
+        let context = AppDelegate.viewContext
+        for recipe in FavoriteRecipe.all {
+            if recipe.uri == uri {
+                context.delete(recipe)
+            }
+        }
+    }
+    
 }
