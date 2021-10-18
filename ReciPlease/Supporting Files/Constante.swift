@@ -29,4 +29,31 @@ struct Constante {
     static let noRecipeImage = "cloche"
     static let greenColor = UIColor(red: 82/255, green: 181/255, blue: 176/255, alpha: 1)
     static let blueColor = UIColor(red: 199/255, green: 229/255, blue: 233/255, alpha: 1)
+    static let dishType = [
+        "All",
+        "Biscuits and cookies",
+        "Bread",
+        "Cereals",
+        "Condiments and sauces",
+        "Desserts",
+        "Drinks",
+        "Main course",
+        "Pancake",
+        "Preps",
+        "Preserve",
+        "Salad",
+        "Sandwishes",
+        "Side dish",
+        "Soup",
+        "Starter",
+        "Sweets"
+    ]
+    static let mealType = [
+        "All",
+        "Breakfast",
+        "Dinner",
+        "Lunch",
+        "Snack",
+        "Teatime"
+    ]
 }

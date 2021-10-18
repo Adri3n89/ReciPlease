@@ -12,13 +12,18 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var ingredientTextField: UITextField!
     @IBOutlet private weak var emptyFridgeView: UIView!
     @IBOutlet private weak var ingredientTableView: UITableView!
+    @IBOutlet private weak var mealTypePicker: UIPickerView!
+    @IBOutlet private weak var dishTypePicker: UIPickerView!
     
     var ingredients: [String] = []
     var searchManager: SearchManager!
+    var mealType = ""
+    var dishType = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupPicker()
         ingredientTextField.delegate = self
         searchManager = SearchManager(delegate: self)
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
@@ -27,6 +32,13 @@ class SearchViewController: UIViewController {
     
     @objc private func closeKeyboard() {
         view.endEditing(true)
+    }
+    
+    private func setupPicker() {
+        mealTypePicker.delegate = self
+        mealTypePicker.dataSource = self
+        dishTypePicker.delegate = self
+        dishTypePicker.dataSource = self
     }
     
     private func setupTableView() {
@@ -40,7 +52,7 @@ class SearchViewController: UIViewController {
             self.alert(text: Constante.needOneIngredient)
             return
         }
-            searchManager.searchRecipe(ingredients: ingredients)
+            searchManager.searchRecipe(ingredients: ingredients, mealType: mealType, dishType: dishType)
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -101,4 +113,30 @@ extension SearchViewController: UITextFieldDelegate {
         closeKeyboard()
         return true
     }
+}
+
+extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerView.tag == 0 ? Constante.mealType.count : Constante.dishType.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Avenir Next", size: 16)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = pickerView.tag == 0 ? Constante.mealType[row] : Constante.dishType[row]
+        return pickerLabel!
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerView.tag == 0 ? (mealType = Constante.mealType[row]) : (dishType = Constante.dishType[row])
+    }
+    
 }

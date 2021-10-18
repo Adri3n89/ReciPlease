@@ -21,9 +21,11 @@ class SearchManager {
         self.delegate = delegate
     }
     
-    func searchRecipe(ingredients: [String]) {
+    func searchRecipe(ingredients: [String], mealType: String, dishType: String) {
         let ingredientsString = ingredients.joined(separator: ",")
-        let request = AF.request("\(Constante.searchURL)\(ingredientsString)")
+        let mealFormatted = mealType == "All" ? "" : "&mealType=\(mealType)"
+        let dishFormatted = dishType == "All" ? "" : "&dishType=\(dishType.replacingOccurrences(of: " ", with: "%20"))"
+        let request = AF.request("\(Constante.searchURL)\(ingredientsString)\(mealFormatted)\(dishFormatted)")
         
         request.responseDecodable(of: SearchResponse.self) { response in
             guard let recipe = response.value else {

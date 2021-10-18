@@ -61,6 +61,7 @@ struct Recipe: Codable {
     let url: String
     let shareAs: String
     let yield: Float
+    let cuisineType, mealType, dishType: [String]
     let ingredientLines: [String]
     let ingredients: [Ingredient]
     let totalTime: Int
