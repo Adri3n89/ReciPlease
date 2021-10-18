@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constante {
     static let apiKey = "app_key=c64f200a51df3bf8200bf371740f5673"
@@ -22,4 +23,10 @@ struct Constante {
     static let favorite = "Favorite"
     static let favoriteIcon = "star.fill"
     static let needOneIngredient = "please add at least 1 ingredient"
+    static let noFavoriteString = "Oups!\nIt looks like you don't have favorite recipe yet.\nDo a search, select a recipe and click on the favorites button to find the recipe on this tab"
+    static let noRecipeString = "Oups!\nIt looks like we don't find any recipe for you.\nPlease change your ingredient or add more"
+    static let noFavoriteImage = "book"
+    static let noRecipeImage = "cloche"
+    static let greenColor = UIColor(red: 82/255, green: 181/255, blue: 176/255, alpha: 1)
+    static let blueColor = UIColor(red: 199/255, green: 229/255, blue: 233/255, alpha: 1)
 }

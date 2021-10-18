@@ -76,5 +76,5 @@ struct Ingredient: Codable {
 
 // MARK: - SearchLinks
 struct SearchLinks: Codable {
-    var next: Next
+    var next: Next?
 }

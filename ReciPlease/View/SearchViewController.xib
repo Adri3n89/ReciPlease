@@ -5,12 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="ReciPlease" customModuleProvider="target">
             <connections>
-                <outlet property="emptyFridgeLabel" destination="sVy-uf-Rda" id="R9E-uu-Jex"/>
+                <outlet property="emptyFridgeView" destination="DGd-SH-6Hk" id="baO-hl-dWr"/>
                 <outlet property="ingredientTableView" destination="WQa-fI-6UI" id="UCV-ZF-Z15"/>
                 <outlet property="ingredientTextField" destination="oq6-cS-5Gs" id="gY8-DC-jAl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -154,33 +155,64 @@
                         <constraint firstItem="WQa-fI-6UI" firstAttribute="top" secondItem="SId-IG-B5f" secondAttribute="bottom" constant="20" id="m0s-2X-tuT"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your fridge is empty, please go buy some food !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVy-uf-Rda">
-                    <rect key="frame" x="103.66666666666669" y="367" width="207" height="82"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGd-SH-6Hk">
+                    <rect key="frame" x="20" y="190" width="374" height="426"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RAN-kQ-lrK">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="426"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Capture d’écran 2021-10-17 à 21.56.54" translatesAutoresizingMaskIntoConstraints="NO" id="5jt-d1-71a">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="358"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your fridge is empty, please go add some food !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVy-uf-Rda">
+                                    <rect key="frame" x="0.0" y="366" width="374" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="x5s-2d-mLA"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="RAN-kQ-lrK" secondAttribute="bottom" id="1YD-Z5-kug"/>
+                        <constraint firstAttribute="trailing" secondItem="RAN-kQ-lrK" secondAttribute="trailing" id="93W-CE-tFi"/>
+                        <constraint firstItem="RAN-kQ-lrK" firstAttribute="leading" secondItem="DGd-SH-6Hk" secondAttribute="leading" id="vUs-sa-OBi"/>
+                        <constraint firstItem="RAN-kQ-lrK" firstAttribute="top" secondItem="DGd-SH-6Hk" secondAttribute="top" id="xcb-DQ-thZ"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.78137165310000001" green="0.89771252869999996" blue="0.91372960810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="Vxl-e4-zJg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7uQ-uN-nop"/>
+                <constraint firstItem="DGd-SH-6Hk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9al-SF-16x"/>
                 <constraint firstItem="Vxl-e4-zJg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="C5f-FT-KdA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kLY-XS-XAf" secondAttribute="bottom" constant="20" id="Enx-GH-LUv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kLY-XS-XAf" secondAttribute="trailing" constant="20" id="J99-TV-JBf"/>
-                <constraint firstItem="sVy-uf-Rda" firstAttribute="centerX" secondItem="WQa-fI-6UI" secondAttribute="centerX" id="VFd-te-cBj"/>
+                <constraint firstItem="DGd-SH-6Hk" firstAttribute="top" secondItem="kLY-XS-XAf" secondAttribute="top" constant="50" id="Pxt-ND-AIS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DGd-SH-6Hk" secondAttribute="trailing" constant="20" id="QaO-XC-ocg"/>
+                <constraint firstItem="kLY-XS-XAf" firstAttribute="bottom" secondItem="DGd-SH-6Hk" secondAttribute="bottom" constant="100" id="WDK-K3-Lg4"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="bottom" secondItem="0dp-BB-Ac9" secondAttribute="bottom" constant="80" id="Wlc-1y-49B"/>
                 <constraint firstItem="SId-IG-B5f" firstAttribute="width" secondItem="aKO-MA-uri" secondAttribute="width" id="aJR-Fj-RxD"/>
+                <constraint firstItem="DGd-SH-6Hk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ech-Ku-gb0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0dp-BB-Ac9" secondAttribute="trailing" constant="20" id="jnM-r3-ZbA"/>
                 <constraint firstItem="0dp-BB-Ac9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="lKz-Kd-ec2"/>
-                <constraint firstItem="sVy-uf-Rda" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="p6v-ao-Y2Z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vxl-e4-zJg" secondAttribute="trailing" constant="20" id="qdZ-95-ehj"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="top" secondItem="Vxl-e4-zJg" secondAttribute="bottom" constant="20" id="uJc-U5-mcD"/>
-                <constraint firstItem="sVy-uf-Rda" firstAttribute="centerY" secondItem="WQa-fI-6UI" secondAttribute="centerY" id="v4A-e3-0ky"/>
                 <constraint firstItem="0dp-BB-Ac9" firstAttribute="top" secondItem="Vxl-e4-zJg" secondAttribute="bottom" constant="10" id="vlr-BU-ebs"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wSK-LW-rYd"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="136.14130434782609"/>
         </view>
     </objects>
+    <resources>
+        <image name="Capture d’écran 2021-10-17 à 21.56.54" width="1010" height="1362"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

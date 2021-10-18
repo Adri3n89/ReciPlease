@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol FavoriteManagerDelegate {
-    func loadFavoriteSuccess(recipe: Hit)
+    func loadFavoriteSuccess(recipes: [Hit])
     func loadFavoriteError(error: String)
 }
 
@@ -21,16 +21,22 @@ class FavoriteManager {
         self.delegate = delegate
     }
     
-    func loadFavorite(recipe: String) {
-        guard let range = recipe.range(of: "#") else { return }
-        let recipeURI = recipe[range.upperBound...]
-        let request = AF.request(Constante.favoriteURL(recipe: String(recipeURI)))
-        request.responseDecodable(of: Hit.self) { response in
-            guard let favorite = response.value else {
-                self.delegate.loadFavoriteError(error: response.error!.localizedDescription)
-                return
+    func loadFavorite(recipes: [FavoriteRecipe]) {
+        var allRecipes: [Hit] = []
+        for recipe in recipes {
+            guard let range = recipe.uri!.range(of: "#") else { return }
+            let recipeURI = recipe.uri![range.upperBound...]
+            let request = AF.request(Constante.favoriteURL(recipe: String(recipeURI)))
+            request.responseDecodable(of: Hit.self) { response in
+                guard let favorite = response.value else {
+                    self.delegate.loadFavoriteError(error: response.error!.localizedDescription)
+                    return
+                }
+                allRecipes.append(favorite)
+                if allRecipes.count == recipes.count {
+                    self.delegate.loadFavoriteSuccess(recipes: allRecipes)
+                }
             }
-            self.delegate.loadFavoriteSuccess(recipe: favorite)
         }
     }
 }

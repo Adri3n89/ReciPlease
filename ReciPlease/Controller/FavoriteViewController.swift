@@ -17,17 +17,14 @@ class FavoriteViewController: UITableViewController {
         super.viewDidLoad()
         favoriteManager = FavoriteManager(delegate: self)
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
+        tableView.register(UINib.init(nibName: "EmptyFavoriteCell", bundle: nil), forCellReuseIdentifier: "EmptyFavoriteCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         favorites = FavoriteRecipe.all
         favoriteRecipes = []
-        guard favorites.count > 0 else {
-            tableView.reloadData()
-            return
-        }
-        for recipe in favorites {
-            favoriteManager.loadFavorite(recipe: recipe.uri!)
+        if favorites.count > 0 {
+            favoriteManager.loadFavorite(recipes: favorites)
         }
         tableView.reloadData()
     }
@@ -45,10 +42,8 @@ class FavoriteViewController: UITableViewController {
             cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
             return cell
         } else {
-            let emptyFavoriteCell = UITableViewCell()
-            var content = emptyFavoriteCell.defaultContentConfiguration()
-            content.attributedText = NSAttributedString(string: "Oups!\nIt looks like you don't have a favorite recipe yet.\nDo a search, select a recipe and click on the favorites button to find the recipe on this tab")
-            emptyFavoriteCell.contentConfiguration = content
+            let emptyFavoriteCell = tableView.dequeueReusableCell(withIdentifier: "EmptyFavoriteCell", for: indexPath) as! EmptyFavoriteCell
+            emptyFavoriteCell.setup(text: Constante.noFavoriteString, image: Constante.noFavoriteImage)
             return emptyFavoriteCell
         }
     }
@@ -76,8 +71,8 @@ class FavoriteViewController: UITableViewController {
 }
 
 extension FavoriteViewController: FavoriteManagerDelegate {
-    func loadFavoriteSuccess(recipe: Hit) {
-        favoriteRecipes.append(recipe)
+    func loadFavoriteSuccess(recipes: [Hit]) {
+        favoriteRecipes = recipes
         tableView.reloadData()
     }
     

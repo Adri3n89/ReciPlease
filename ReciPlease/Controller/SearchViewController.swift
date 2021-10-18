@@ -10,7 +10,7 @@ import UIKit
 class SearchViewController: UIViewController {
 
     @IBOutlet private weak var ingredientTextField: UITextField!
-    @IBOutlet private weak var emptyFridgeLabel: UILabel!
+    @IBOutlet private weak var emptyFridgeView: UIView!
     @IBOutlet private weak var ingredientTableView: UITableView!
     
     var ingredients: [String] = []
@@ -48,7 +48,7 @@ class SearchViewController: UIViewController {
             ingredients.append(ingredient)
             ingredientTableView.reloadData()
             if ingredients.count != 0 {
-                emptyFridgeLabel.isHidden = true
+                emptyFridgeView.isHidden = true
             }
             ingredientTextField.text = ""
             closeKeyboard()
@@ -58,7 +58,7 @@ class SearchViewController: UIViewController {
     @IBAction func clearButtonPressed(_ sender: Any) {
         ingredients.removeAll()
         ingredientTableView.reloadData()
-        emptyFridgeLabel.isHidden = false
+        emptyFridgeView.isHidden = false
     }
     
 }

@@ -8,7 +8,6 @@ target 'ReciPlease' do
   # Pods for ReciPlease
     pod 'Alamofire', '5.4.4'
     pod 'SDWebImage', '5.11.1'
-    pod "SwiftyDAO", '2.2.2'
 
   target 'ReciPleaseTests' do
     inherit! :search_paths

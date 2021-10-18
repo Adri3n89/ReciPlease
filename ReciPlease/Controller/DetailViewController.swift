@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var likeLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var effectView: UIView!
+    @IBOutlet private weak var infoView: UIView!
     @IBOutlet private weak var ingredientTableView: UITableView!
     
     var hit: Hit?
@@ -23,37 +24,26 @@ class DetailViewController: UIViewController {
         setupOutlets()
         setupTableview()
         effectView.addGradient(colors: [.yellow, .red])
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
+        let favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
+        navigationItem.rightBarButtonItem?.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
     
     private func setupOutlets() {
         effectView.addGradient(colors: [UIColor.clear, UIColor.darkGray])
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
         guard let recipe = hit?.recipe else { return }
         recipeImageview.setImage(url: recipe.image)
         recipeNameLabel.text = recipe.label
         likeLabel.text = "\(recipe.yield)"
         timeLabel.text = "\(recipe.totalTime)"
+        infoView.layer.borderWidth = 2
+        infoView.layer.borderColor = Constante.greenColor.cgColor
+        infoView.layer.cornerRadius = 5
+        infoView.backgroundColor = Constante.blueColor
     }
     
     @objc private func setFavorite() {
-        
-    }
-    
-    private func setupTableview() {
-        ingredientTableView.register(UINib.init(nibName: "IngredientCell", bundle: nil), forCellReuseIdentifier: "ingredientCell")
-        ingredientTableView.delegate = self
-        ingredientTableView.dataSource = self
-    }
-
-    @IBAction func getDirectionPressed(sender: Any) {
-        guard let recipe = hit?.recipe else { return }
-        let newController = WebViewController()
-        newController.urlStr = recipe.url
-        self.navigationController?.pushViewController(newController, animated: true)
-    }
-    
-    @IBAction func addFavorites(sender: Any) {
-        let favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
+        var favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
         if favorites.count == 0 {
             let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
             favorite.uri = hit?.recipe.uri
@@ -69,8 +59,22 @@ class DetailViewController: UIViewController {
 //                    } catch let error as NSError {
 //                    }
         }
+        favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
+        navigationItem.rightBarButtonItem!.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
     
+    private func setupTableview() {
+        ingredientTableView.register(UINib.init(nibName: "IngredientCell", bundle: nil), forCellReuseIdentifier: "ingredientCell")
+        ingredientTableView.delegate = self
+        ingredientTableView.dataSource = self
+    }
+
+    @IBAction func getDirectionPressed(sender: Any) {
+        guard let recipe = hit?.recipe else { return }
+        let newController = WebViewController()
+        newController.urlStr = recipe.url
+        self.navigationController?.pushViewController(newController, animated: true)
+    }
     
 }
 
