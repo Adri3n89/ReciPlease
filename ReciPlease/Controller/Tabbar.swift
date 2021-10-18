@@ -26,8 +26,8 @@ class Tabbar: UITabBarController {
         
         viewControllers = [searchNav, favoriteNav]
         tabBar.clipsToBounds = true
-        tabBar.tintColor = UIColor(displayP3Red: 199/255, green: 229/255, blue: 233/255, alpha: 1)
-        tabBar.backgroundColor = UIColor(displayP3Red: 82/255, green: 181/255, blue: 176/255, alpha: 1)
+        tabBar.tintColor = Constante.blueColor
+        tabBar.backgroundColor = Constante.greenColor
         tabBar.unselectedItemTintColor = .darkGray
 
     }

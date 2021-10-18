@@ -17,8 +17,8 @@ class SearchViewController: UIViewController {
     
     var ingredients: [String] = []
     var searchManager: SearchManager!
-    var mealType = ""
-    var dishType = ""
+    var mealType = "All"
+    var dishType = "All"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,7 +128,7 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         var pickerLabel: UILabel? = (view as? UILabel)
         if pickerLabel == nil {
             pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Avenir Next", size: 16)
+            pickerLabel?.font = UIFont(name: "Avenir Next", size: 15)
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = pickerView.tag == 0 ? Constante.mealType[row] : Constante.dishType[row]
