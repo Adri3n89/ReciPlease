@@ -6,28 +6,69 @@
 //
 
 import XCTest
+import Alamofire
+import Mocker
 @testable import ReciPlease
 
 class ReciPleaseTests: XCTestCase {
+    
+    func testFetchingRecipe() {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
+        let sessionManager = Session(configuration: configuration)
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+        let apiEndpoint = URL(string: "https://api.url.com")!
+        let requestExpectation = expectation(description: "Request should finish")
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+        let mockedData = FakeResponseData().correctData
+        let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 200, data: [.get: mockedData])
+        mock.register()
+        
+        let searchManager = SearchManager(delegate: SearchViewController())
+        searchManager.sessionManager = sessionManager
+        searchManager.searchRecipe(ingredients: ["chicken"], mealType: "", dishType: "")
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        sessionManager
+            .request(apiEndpoint)
+            .responseDecodable(of: SearchResponse.self) { (response) in
+                XCTAssertNil(response.error)
+                XCTAssertNotNil(response.value)
+                requestExpectation.fulfill()
+            }.resume()
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        wait(for: [requestExpectation], timeout: 10.0)
     }
+    
+    func testFetchingRecipeBadResponse() {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
+        let sessionManager = Session(configuration: configuration)
+
+        let apiEndpoint = URL(string: "https://api.url.com")!
+        let requestExpectation = expectation(description: "Request should finish")
+
+        let mockedData = FakeResponseData().incorrectData
+        let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 500, data: [.get: mockedData])
+        mock.register()
+        
+        let searchManager = SearchManager(delegate: SearchViewController())
+        searchManager.sessionManager = sessionManager
+        
+        sessionManager
+            .request(apiEndpoint)
+            .responseDecodable(of: SearchResponse.self) { (response) in
+                XCTAssertNotNil(response.error)
+                XCTAssertNil(response.value)
+                requestExpectation.fulfill()
+            }.resume()
+        
+        searchManager.searchRecipe(ingredients: ["chicken"], mealType: "All", dishType: "All")
+
+
+        wait(for: [requestExpectation], timeout: 10.0)
+    }
+    
+    
 
 }
+

@@ -8,6 +8,7 @@ target 'ReciPlease' do
   # Pods for ReciPlease
     pod 'Alamofire', '5.4.4'
     pod 'SDWebImage', '5.11.1'
+    pod 'Mocker', '2.5.4'
 
   target 'ReciPleaseTests' do
     inherit! :search_paths

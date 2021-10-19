@@ -30,6 +30,7 @@
 		7A97BA37270C6BBE001DC9E0 /* IngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */; };
 		7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */; };
 		7A97BA3B270C8B11001DC9E0 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */; };
+		7AA6D778271EA4A80053F6D0 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D777271EA4A80053F6D0 /* FakeResponseData.swift */; };
 		7ABF1A3A270B1A3A007E005F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF1A38270B1A3A007E005F /* RecipeCell.swift */; };
 		7ABF1A3B270B1A3A007E005F /* RecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ABF1A39270B1A3A007E005F /* RecipeCell.xib */; };
 		7ABF1A3E270B1BFC007E005F /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF1A3C270B1BFC007E005F /* FavoriteViewController.swift */; };
@@ -80,6 +81,7 @@
 		7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientCell.xib; sourceTree = "<group>"; };
 		7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		7AA6D777271EA4A80053F6D0 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		7ABF1A38270B1A3A007E005F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		7ABF1A39270B1A3A007E005F /* RecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCell.xib; sourceTree = "<group>"; };
 		7ABF1A3C270B1BFC007E005F /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				7A5C8EB7270ADFE6005AB093 /* ReciPleaseTests.swift */,
 				7AF8D1C8270D831E003F4F66 /* datas.json */,
+				7AA6D777271EA4A80053F6D0 /* FakeResponseData.swift */,
 			);
 			path = ReciPleaseTests;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A5C8EB8270ADFE6005AB093 /* ReciPleaseTests.swift in Sources */,
+				7AA6D778271EA4A80053F6D0 /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

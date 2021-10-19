@@ -1,22 +1,26 @@
 PODS:
   - Alamofire (5.4.4)
+  - Mocker (2.5.4)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
   - Alamofire (= 5.4.4)
+  - Mocker (~> 2.5.4)
   - SDWebImage (= 5.11.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Mocker
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Mocker: a507909031ef5d1014fe18f383c1d0f96c182b99
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 0d06d0320196f134abff2b3a6d3ca47763549809
+PODFILE CHECKSUM: c0184641b78acc13d48c428f4bd1abf1df932615
 
 COCOAPODS: 1.11.2

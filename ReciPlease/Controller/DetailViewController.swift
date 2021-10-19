@@ -25,6 +25,9 @@ class DetailViewController: UIViewController {
         setupTableview()
         effectView.addGradient(colors: [.yellow, .red])
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
         navigationItem.rightBarButtonItem?.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
