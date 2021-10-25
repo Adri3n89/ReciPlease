@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
+        let favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext).filter { $0.uri == hit?.recipe.uri }
         navigationItem.rightBarButtonItem?.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
     
@@ -46,13 +46,13 @@ class DetailViewController: UIViewController {
     }
     
     @objc private func setFavorite() {
-        var favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
+        var favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext).filter { $0.uri == hit?.recipe.uri }
         if favorites.count == 0 {
             let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
             favorite.uri = hit?.recipe.uri
             try? AppDelegate.viewContext.save()
         } else {
-            FavoriteRecipe.deleteRecipe(uri: hit!.recipe.uri)
+            FavoriteRecipe.deleteRecipe(uri: hit!.recipe.uri, context: AppDelegate.viewContext)
                     // delete all FavoriteRecipe in CoreData
 //                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FavoriteRecipe")
 //                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -62,7 +62,7 @@ class DetailViewController: UIViewController {
 //                    } catch let error as NSError {
 //                    }
         }
-        favorites = FavoriteRecipe.all.filter { $0.uri == hit?.recipe.uri }
+        favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext).filter { $0.uri == hit?.recipe.uri }
         navigationItem.rightBarButtonItem!.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
     

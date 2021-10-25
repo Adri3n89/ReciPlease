@@ -11,22 +11,30 @@ class FavoriteViewController: UITableViewController {
 
     var favorites: [FavoriteRecipe] = []
     var favoriteRecipes: [Hit] = []
-    var favoriteManager: FavoriteManager!
+    var favoriteManager = FavoriteService()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        favoriteManager = FavoriteManager(delegate: self)
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
         tableView.register(UINib.init(nibName: "EmptyFavoriteCell", bundle: nil), forCellReuseIdentifier: "EmptyFavoriteCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        favorites = FavoriteRecipe.all
+        favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext)
         favoriteRecipes = []
         if favorites.count > 0 {
-            favoriteManager.loadFavorite(recipes: favorites)
+            favoriteManager.loadFavorite(recipes: favorites) { result in
+                switch result {
+                    case .success(let recipes):
+                        self.favoriteRecipes = recipes
+                        self.tableView.reloadData()
+                    case .failure(let error):
+                        self.alert(text: error.localizedDescription)
+                }
+            }
+        } else {
+            tableView.reloadData()
         }
-        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +67,7 @@ class FavoriteViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if favoriteRecipes.count > 0 {
             if editingStyle == .delete {
-                FavoriteRecipe.deleteRecipe(uri: favoriteRecipes[indexPath.row].recipe.uri)
+                FavoriteRecipe.deleteRecipe(uri: favoriteRecipes[indexPath.row].recipe.uri, context: AppDelegate.viewContext)
                 favoriteRecipes.remove(at: indexPath.row)
                 tableView.reloadData()
             }
@@ -69,18 +77,4 @@ class FavoriteViewController: UITableViewController {
     }
     
 }
-
-extension FavoriteViewController: FavoriteManagerDelegate {
-    func loadFavoriteSuccess(recipes: [Hit]) {
-        favoriteRecipes = recipes
-        tableView.reloadData()
-    }
-    
-    func loadFavoriteError(error: String) {
-        self.alert(text: error)
-    }
-    
-    
-}
-
 

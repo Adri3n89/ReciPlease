@@ -13,6 +13,7 @@ target 'ReciPlease' do
   target 'ReciPleaseTests' do
     inherit! :search_paths
     # Pods for testing
+      pod 'Mocker', '2.5.4'
   end
 
 end

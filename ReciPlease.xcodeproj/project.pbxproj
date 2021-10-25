@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		70F6A2E258FC3D23CC773EEE /* Pods_ReciPleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7C11492C390BF768E0ADD3 /* Pods_ReciPleaseTests.framework */; };
 		7A183803271A19E20065375F /* Constante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A183802271A19E20065375F /* Constante.swift */; };
-		7A183805271A21630065375F /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A183804271A21630065375F /* FavoriteManager.swift */; };
+		7A183805271A21630065375F /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A183804271A21630065375F /* FavoriteService.swift */; };
 		7A1FC5A7270C49010077392A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1FC5A5270C49010077392A /* DetailViewController.swift */; };
 		7A1FC5A8270C49010077392A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1FC5A6270C49010077392A /* DetailViewController.xib */; };
 		7A33DB50271CC0C700BC04FD /* EmptyFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33DB4E271CC0C700BC04FD /* EmptyFavoriteCell.swift */; };
@@ -29,13 +29,17 @@
 		7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */; };
 		7A97BA37270C6BBE001DC9E0 /* IngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */; };
 		7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */; };
-		7A97BA3B270C8B11001DC9E0 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */; };
+		7A97BA3B270C8B11001DC9E0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A97BA3A270C8B11001DC9E0 /* SearchService.swift */; };
 		7AA6D778271EA4A80053F6D0 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D777271EA4A80053F6D0 /* FakeResponseData.swift */; };
 		7ABF1A3A270B1A3A007E005F /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF1A38270B1A3A007E005F /* RecipeCell.swift */; };
 		7ABF1A3B270B1A3A007E005F /* RecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ABF1A39270B1A3A007E005F /* RecipeCell.xib */; };
 		7ABF1A3E270B1BFC007E005F /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF1A3C270B1BFC007E005F /* FavoriteViewController.swift */; };
 		7ABF1A3F270B1BFC007E005F /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ABF1A3D270B1BFC007E005F /* FavoriteViewController.xib */; };
 		7AC0C057270F1A160070B726 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0C056270F1A160070B726 /* Extensions.swift */; };
+		7ADCC5E5272703E7006AA676 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCC5E4272703E7006AA676 /* CoreDataStack.swift */; };
+		7ADCC5E72727195A006AA676 /* MockingURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCC5E62727195A006AA676 /* MockingURLProtocol.swift */; };
+		7ADCC5E92727197A006AA676 /* Mocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCC5E82727197A006AA676 /* Mocker.swift */; };
+		7ADCC5EB272719AA006AA676 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCC5EA272719AA006AA676 /* Mock.swift */; };
 		7AF8D1C9270D831E003F4F66 /* datas.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8D1C8270D831E003F4F66 /* datas.json */; };
 		7AF8D1CE270DF584003F4F66 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8D1CC270DF584003F4F66 /* WebViewController.swift */; };
 		7AF8D1CF270DF584003F4F66 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF8D1CD270DF584003F4F66 /* WebViewController.xib */; };
@@ -57,7 +61,7 @@
 		26440BF754676E7DB9F24534 /* Pods-ReciPleaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReciPleaseTests.release.xcconfig"; path = "Target Support Files/Pods-ReciPleaseTests/Pods-ReciPleaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		3CC7C888498C0E1B33324B7A /* Pods-ReciPlease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReciPlease.debug.xcconfig"; path = "Target Support Files/Pods-ReciPlease/Pods-ReciPlease.debug.xcconfig"; sourceTree = "<group>"; };
 		7A183802271A19E20065375F /* Constante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constante.swift; sourceTree = "<group>"; };
-		7A183804271A21630065375F /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
+		7A183804271A21630065375F /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		7A1FC5A5270C49010077392A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7A1FC5A6270C49010077392A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		7A33DB4E271CC0C700BC04FD /* EmptyFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFavoriteCell.swift; sourceTree = "<group>"; };
@@ -80,13 +84,17 @@
 		7A97BA34270C6BBE001DC9E0 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		7A97BA35270C6BBE001DC9E0 /* IngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientCell.xib; sourceTree = "<group>"; };
 		7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
-		7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		7A97BA3A270C8B11001DC9E0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		7AA6D777271EA4A80053F6D0 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		7ABF1A38270B1A3A007E005F /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		7ABF1A39270B1A3A007E005F /* RecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCell.xib; sourceTree = "<group>"; };
 		7ABF1A3C270B1BFC007E005F /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		7ABF1A3D270B1BFC007E005F /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		7AC0C056270F1A160070B726 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7ADCC5E4272703E7006AA676 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7ADCC5E62727195A006AA676 /* MockingURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingURLProtocol.swift; sourceTree = "<group>"; };
+		7ADCC5E82727197A006AA676 /* Mocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocker.swift; sourceTree = "<group>"; };
+		7ADCC5EA272719AA006AA676 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		7AF8D1C8270D831E003F4F66 /* datas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = datas.json; sourceTree = "<group>"; };
 		7AF8D1CC270DF584003F4F66 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7AF8D1CD270DF584003F4F66 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -152,8 +160,12 @@
 			isa = PBXGroup;
 			children = (
 				7A5C8EB7270ADFE6005AB093 /* ReciPleaseTests.swift */,
+				7ADCC5E4272703E7006AA676 /* CoreDataStack.swift */,
 				7AF8D1C8270D831E003F4F66 /* datas.json */,
 				7AA6D777271EA4A80053F6D0 /* FakeResponseData.swift */,
+				7ADCC5E62727195A006AA676 /* MockingURLProtocol.swift */,
+				7ADCC5EA272719AA006AA676 /* Mock.swift */,
+				7ADCC5E82727197A006AA676 /* Mocker.swift */,
 			);
 			path = ReciPleaseTests;
 			sourceTree = "<group>";
@@ -161,8 +173,8 @@
 		7A5C8ED0270AE275005AB093 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A97BA3A270C8B11001DC9E0 /* SearchManager.swift */,
-				7A183804271A21630065375F /* FavoriteManager.swift */,
+				7A97BA3A270C8B11001DC9E0 /* SearchService.swift */,
+				7A183804271A21630065375F /* FavoriteService.swift */,
 				7A97BA38270C7A56001DC9E0 /* SearchResponse.swift */,
 				7A46C5E42711CFFC0077402E /* FavoriteRecipe.swift */,
 			);
@@ -263,6 +275,7 @@
 				7A5C8EAF270ADFE6005AB093 /* Sources */,
 				7A5C8EB0270ADFE6005AB093 /* Frameworks */,
 				7A5C8EB1270ADFE6005AB093 /* Resources */,
+				AF6AD2A47356AD94BA2796E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,6 +398,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AF6AD2A47356AD94BA2796E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReciPleaseTests/Pods-ReciPleaseTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReciPleaseTests/Pods-ReciPleaseTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReciPleaseTests/Pods-ReciPleaseTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DDBC616C9493474E711EC0DE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,11 +445,11 @@
 				7A97BA36270C6BBE001DC9E0 /* IngredientCell.swift in Sources */,
 				7A97BA39270C7A57001DC9E0 /* SearchResponse.swift in Sources */,
 				7A5C8ED8270AE401005AB093 /* SearchViewController.swift in Sources */,
-				7A183805271A21630065375F /* FavoriteManager.swift in Sources */,
+				7A183805271A21630065375F /* FavoriteService.swift in Sources */,
 				7ABF1A3A270B1A3A007E005F /* RecipeCell.swift in Sources */,
 				7A5C8E9E270ADFE3005AB093 /* AppDelegate.swift in Sources */,
 				7A33DB50271CC0C700BC04FD /* EmptyFavoriteCell.swift in Sources */,
-				7A97BA3B270C8B11001DC9E0 /* SearchManager.swift in Sources */,
+				7A97BA3B270C8B11001DC9E0 /* SearchService.swift in Sources */,
 				7A183803271A19E20065375F /* Constante.swift in Sources */,
 				7AC0C057270F1A160070B726 /* Extensions.swift in Sources */,
 				7A46C5E52711CFFC0077402E /* FavoriteRecipe.swift in Sources */,
@@ -434,8 +464,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADCC5E92727197A006AA676 /* Mocker.swift in Sources */,
+				7ADCC5E72727195A006AA676 /* MockingURLProtocol.swift in Sources */,
 				7A5C8EB8270ADFE6005AB093 /* ReciPleaseTests.swift in Sources */,
 				7AA6D778271EA4A80053F6D0 /* FakeResponseData.swift in Sources */,
+				7ADCC5E5272703E7006AA676 /* CoreDataStack.swift in Sources */,
+				7ADCC5EB272719AA006AA676 /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

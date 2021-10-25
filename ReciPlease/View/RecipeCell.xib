@@ -85,14 +85,6 @@
                             <constraint firstItem="odz-9l-mI8" firstAttribute="leading" secondItem="qso-FW-u14" secondAttribute="leading" constant="2" id="g7R-JQ-Mcr"/>
                             <constraint firstItem="odz-9l-mI8" firstAttribute="top" secondItem="qso-FW-u14" secondAttribute="top" constant="2" id="zcf-pG-eJb"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.32156862749999998" green="0.70980392160000005" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <integer key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pv-g1-9Lu">
                         <rect key="frame" x="10" y="104.5" width="394" height="85.5"/>

@@ -95,14 +95,6 @@
                         <constraint firstItem="3bh-oh-eCS" firstAttribute="leading" secondItem="c7y-nM-KiE" secondAttribute="leading" constant="2" id="WiA-17-8qj"/>
                         <constraint firstAttribute="bottom" secondItem="3bh-oh-eCS" secondAttribute="bottom" constant="2" id="Zew-ZX-s9k"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                            <integer key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="u9p-xT-5fa">
                     <rect key="frame" x="0.0" y="274.66666666666674" width="414" height="441.33333333333326"/>

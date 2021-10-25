@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var dishTypePicker: UIPickerView!
     
     var ingredients: [String] = []
-    var searchManager: SearchManager!
+    var searchManager = SearchService()
     var mealType = "All"
     var dishType = "All"
     
@@ -25,7 +25,6 @@ class SearchViewController: UIViewController {
         setupTableView()
         setupPicker()
         ingredientTextField.delegate = self
-        searchManager = SearchManager(delegate: self)
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -49,10 +48,19 @@ class SearchViewController: UIViewController {
 
     @IBAction func searchPressed(_ sender: Any) {
         guard ingredients.count > 0 else {
-            self.alert(text: Constante.needOneIngredient)
+            alert(text: Constante.needOneIngredient)
             return
         }
-            searchManager.searchRecipe(ingredients: ingredients, mealType: mealType, dishType: dishType)
+        searchManager.searchRecipe(ingredients: ingredients, mealType: mealType, dishType: dishType) { result in
+            switch result {
+                case .success(let recipe):
+                    let newController = ResultViewController()
+                    newController.researchResult = recipe
+                    self.navigationController?.pushViewController(newController, animated: true)
+                case .failure(let error):
+                    self.alert(text: error.localizedDescription)
+            }
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -94,18 +102,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-}
-
-extension SearchViewController: SearchManagerDelegate {
-    func searchRecipeSuccess(response: SearchResponse) {
-        let newController = ResultViewController()
-        newController.researchResult = response
-        self.navigationController?.pushViewController(newController, animated: true)
-    }
-    
-    func searchRecipeError(error: String) {
-        self.alert(text: error)
-    }
 }
 
 extension SearchViewController: UITextFieldDelegate {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ResultViewController: UITableViewController {
         
@@ -14,11 +15,11 @@ class ResultViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    var searchManager: SearchManager!
+    
+    var searchManager = SearchService()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchManager = SearchManager(delegate: self)
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
         tableView.register(UINib.init(nibName: "EmptyFavoriteCell", bundle: nil), forCellReuseIdentifier: "EmptyFavoriteCell")
     }
@@ -44,7 +45,16 @@ class ResultViewController: UITableViewController {
         let recipe = result.hits[indexPath.row].recipe
         cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
         if indexPath.row == result.hits.count - 3 {
-            searchManager.loadNewPage(url: (researchResult?.links.next!.href)!)
+            searchManager.loadNewPage(url: (researchResult?.links.next!.href)!) { result in
+                switch result {
+                    case .success(let recipe):
+                        self.researchResult!.links.next!.href = recipe.links.next!.href
+                        self.researchResult!.hits += recipe.hits.map{ $0 }
+                        tableView.reloadData()
+                    case .failure(let error):
+                        self.alert(text: error.localizedDescription)
+                    }
+            }
         }
         return cell
     }
@@ -58,14 +68,3 @@ class ResultViewController: UITableViewController {
     
 }
 
-extension ResultViewController: SearchManagerDelegate {
-    func searchRecipeSuccess(response: SearchResponse) {
-        researchResult!.links.next!.href = response.links.next!.href
-        researchResult!.hits += response.hits.map{ $0 }
-        tableView.reloadData()
-    }
-    
-    func searchRecipeError(error: String) {
-        self.alert(text: error)
-    }
-}

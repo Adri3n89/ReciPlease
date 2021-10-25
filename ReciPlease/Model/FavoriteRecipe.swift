@@ -9,17 +9,16 @@ import Foundation
 import CoreData
 
 class FavoriteRecipe: NSManagedObject {
-    static var all: [FavoriteRecipe] {
+    
+    static func getAll(context: NSManagedObjectContext) -> [FavoriteRecipe] {
         let request: NSFetchRequest<FavoriteRecipe> = FavoriteRecipe.fetchRequest()
-        guard let favoriteRecipes = try? AppDelegate.viewContext.fetch(request) else {
-            return []
-        }
+        let favoriteRecipes = try! context.fetch(request)
         return favoriteRecipes
     }
     
-    static func deleteRecipe(uri: String) {
-        let context = AppDelegate.viewContext
-        for recipe in FavoriteRecipe.all {
+    static func deleteRecipe(uri: String, context: NSManagedObjectContext) {
+//        let context = AppDelegate.viewContext
+        for recipe in FavoriteRecipe.getAll(context: context) {
             if recipe.uri == uri {
                 context.delete(recipe)
             }
@@ -27,4 +26,14 @@ class FavoriteRecipe: NSManagedObject {
         try? context.save()
     }
     
+    static func addRecipe(uri: String, context: NSManagedObjectContext) {
+        let favorite = FavoriteRecipe(context: context)
+        favorite.uri = uri
+        try? context.save()
+    }
+    
+}
+
+class CoreDataContext {
+    static var context = AppDelegate.viewContext
 }

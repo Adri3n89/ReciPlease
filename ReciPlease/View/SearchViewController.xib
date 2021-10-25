@@ -24,9 +24,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-BB-Ac9">
-                    <rect key="frame" x="20" y="130" width="374" height="506"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcl-tR-PiX">
+                    <rect key="frame" x="20" y="130" width="374" height="255.66666666666663"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJd-pI-gMe">
+                    <rect key="frame" x="20" y="395.66666666666669" width="374" height="230.33333333333331"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <integer key="value" value="15"/>
@@ -192,7 +201,7 @@
                         <constraint firstItem="WQa-fI-6UI" firstAttribute="top" secondItem="SId-IG-B5f" secondAttribute="bottom" constant="20" id="m0s-2X-tuT"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGd-SH-6Hk">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGd-SH-6Hk">
                     <rect key="frame" x="20" y="190" width="374" height="426"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RAN-kQ-lrK">
@@ -225,23 +234,27 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.78137165310000001" green="0.89771252869999996" blue="0.91372960810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="jcl-tR-PiX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="0R1-f3-6Ni"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NJd-pI-gMe" secondAttribute="trailing" constant="20" id="691-ja-m3l"/>
                 <constraint firstItem="Vxl-e4-zJg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7uQ-uN-nop"/>
+                <constraint firstItem="jcl-tR-PiX" firstAttribute="bottom" secondItem="WQa-fI-6UI" secondAttribute="bottom" constant="10" id="8GN-mZ-D2i"/>
                 <constraint firstItem="DGd-SH-6Hk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9al-SF-16x"/>
                 <constraint firstItem="Vxl-e4-zJg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="C5f-FT-KdA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kLY-XS-XAf" secondAttribute="bottom" constant="20" id="Enx-GH-LUv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kLY-XS-XAf" secondAttribute="trailing" constant="20" id="J99-TV-JBf"/>
                 <constraint firstItem="DGd-SH-6Hk" firstAttribute="top" secondItem="kLY-XS-XAf" secondAttribute="top" constant="50" id="Pxt-ND-AIS"/>
+                <constraint firstItem="jcl-tR-PiX" firstAttribute="top" secondItem="Ugv-cd-aCC" secondAttribute="top" constant="-10" id="Pyk-Cg-fY1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DGd-SH-6Hk" secondAttribute="trailing" constant="20" id="QaO-XC-ocg"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="bottom" secondItem="DGd-SH-6Hk" secondAttribute="bottom" constant="100" id="WDK-K3-Lg4"/>
-                <constraint firstItem="kLY-XS-XAf" firstAttribute="bottom" secondItem="0dp-BB-Ac9" secondAttribute="bottom" constant="80" id="Wlc-1y-49B"/>
                 <constraint firstItem="SId-IG-B5f" firstAttribute="width" secondItem="aKO-MA-uri" secondAttribute="width" id="aJR-Fj-RxD"/>
                 <constraint firstItem="DGd-SH-6Hk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ech-Ku-gb0"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0dp-BB-Ac9" secondAttribute="trailing" constant="20" id="jnM-r3-ZbA"/>
-                <constraint firstItem="0dp-BB-Ac9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="lKz-Kd-ec2"/>
+                <constraint firstItem="NJd-pI-gMe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="iUD-DT-s7w"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jcl-tR-PiX" secondAttribute="trailing" constant="20" id="m2u-MF-g7x"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vxl-e4-zJg" secondAttribute="trailing" constant="20" id="qdZ-95-ehj"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="top" secondItem="Vxl-e4-zJg" secondAttribute="bottom" constant="20" id="uJc-U5-mcD"/>
-                <constraint firstItem="0dp-BB-Ac9" firstAttribute="top" secondItem="Vxl-e4-zJg" secondAttribute="bottom" constant="10" id="vlr-BU-ebs"/>
+                <constraint firstItem="NJd-pI-gMe" firstAttribute="bottom" secondItem="X7v-KX-SeL" secondAttribute="bottom" id="w27-Fq-50F"/>
                 <constraint firstItem="kLY-XS-XAf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wSK-LW-rYd"/>
+                <constraint firstItem="NJd-pI-gMe" firstAttribute="top" secondItem="hVn-3U-STy" secondAttribute="top" id="xgv-28-YXi"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="136.14130434782609"/>
         </view>

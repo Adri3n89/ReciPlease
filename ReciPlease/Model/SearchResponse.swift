@@ -8,7 +8,11 @@
 import Foundation
 
 // MARK: - APIResponse
-struct SearchResponse: Codable {
+struct SearchResponse: Codable, Equatable {
+    static func == (lhs: SearchResponse, rhs: SearchResponse) -> Bool {
+        return lhs.hits == rhs.hits
+    }
+    
     let from, to, count: Int
     var links: SearchLinks
     var hits: [Hit]
@@ -21,7 +25,11 @@ struct SearchResponse: Codable {
 }
 
 // MARK: - Hit
-struct Hit: Codable {
+struct Hit: Codable, Equatable {
+    static func == (lhs: Hit, rhs: Hit) -> Bool {
+        return lhs.links.linksSelf.href == rhs.links.linksSelf.href
+    }
+    
     let recipe: Recipe
     var links: HitLinks
 
