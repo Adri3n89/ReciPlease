@@ -60,25 +60,18 @@ final class ReciPleaseTests: XCTestCase {
     func testSearchRecipesWithBadData() {
         let searchService = SearchService()
         let configuration = URLSessionConfiguration.af.default
-        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
-        let sessionManager = Session(configuration: configuration)
-        searchService.sessionManager = sessionManager
+        configuration.protocolClasses = [MockingURLProtocol.self]
+        let sessionManager = Alamofire.Session(configuration: configuration)
         let apiEndpoint = URL(string: "https://api.example.com/user")!
-        let expectedResponse = FakeResponseData.correctData
-        let mockedData = try! JSONDecoder().decode(SearchResponse.self, from: expectedResponse)
         let requestExpectation = expectation(description: "Request should finish")
 
 
         let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 200, data: [.get: FakeResponseData.incorrectData])
         mock.register()
 
-        searchService.searchRecipe(ingredients: ["chicken"], mealType: "", dishType: "") { response in
-            switch response {
-                case .failure(let error) :
-                    XCTAssertNotNil(error)
-                case .success(let recipes) :
-                    XCTAssertNil(recipes)
-            }
+        searchService.searchRecipe(session: sessionManager, ingredients: ["chicken"], mealType: "", dishType: "") { response in
+            guard case .failure(let error) = response else { return }
+            XCTAssertNotNil(error)
             requestExpectation.fulfill()
         }
 
@@ -88,9 +81,8 @@ final class ReciPleaseTests: XCTestCase {
     func testSearchRecipesWithGoodData() {
         let searchService = SearchService()
         let configuration = URLSessionConfiguration.af.default
-        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
-        let sessionManager = Session(configuration: configuration)
-        searchService.sessionManager = sessionManager
+        configuration.protocolClasses = [MockingURLProtocol.self]
+        let sessionManager = Alamofire.Session(configuration: configuration)
         let apiEndpoint = URL(string: "https://api.example.com/user")!
         let expectedResponse = FakeResponseData.correctData
         let mockedData = try! JSONDecoder().decode(SearchResponse.self, from: expectedResponse)
@@ -100,13 +92,9 @@ final class ReciPleaseTests: XCTestCase {
         let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 200, data: [.get: expectedResponse])
         mock.register()
 
-        searchService.searchRecipe(ingredients: ["chicken"], mealType: "", dishType: "") { response in
-            switch response {
-                case .failure(let error) :
-                    XCTAssertNil(error)
-                case .success(let recipes) :
-                    XCTAssertEqual(recipes, mockedData)
-            }
+        searchService.searchRecipe(session: sessionManager, ingredients: ["chicken"], mealType: "", dishType: "") { response in
+            guard case .success(let recipes) = response else { return }
+            XCTAssertNotNil(recipes)
             requestExpectation.fulfill()
         }
 

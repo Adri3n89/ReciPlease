@@ -51,7 +51,7 @@ class SearchViewController: UIViewController {
             alert(text: Constante.needOneIngredient)
             return
         }
-        searchManager.searchRecipe(ingredients: ingredients, mealType: mealType, dishType: dishType) { result in
+        searchManager.searchRecipe(session: searchManager.sessionManager, ingredients: ingredients, mealType: mealType, dishType: dishType) { result in
             switch result {
                 case .success(let recipe):
                     let newController = ResultViewController()
