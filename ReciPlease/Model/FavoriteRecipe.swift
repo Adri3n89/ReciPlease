@@ -17,7 +17,6 @@ class FavoriteRecipe: NSManagedObject {
     }
     
     static func deleteRecipe(uri: String, context: NSManagedObjectContext) {
-//        let context = AppDelegate.viewContext
         for recipe in FavoriteRecipe.getAll(context: context) {
             if recipe.uri == uri {
                 context.delete(recipe)
@@ -32,8 +31,4 @@ class FavoriteRecipe: NSManagedObject {
         try? context.save()
     }
     
-}
-
-class CoreDataContext {
-    static var context = AppDelegate.viewContext
 }

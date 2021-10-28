@@ -27,6 +27,7 @@ struct Constante {
     static let noRecipeString = "Oups!\nIt looks like we don't find any recipe for you.\nPlease change your ingredient or add more"
     static let noFavoriteImage = "book"
     static let noRecipeImage = "cloche"
+    static let defaultImage = "default"
     static let greenColor = UIColor(red: 82/255, green: 181/255, blue: 176/255, alpha: 1)
     static let blueColor = UIColor(red: 199/255, green: 229/255, blue: 233/255, alpha: 1)
     static let dishType = [

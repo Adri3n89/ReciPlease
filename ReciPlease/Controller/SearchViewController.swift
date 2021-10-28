@@ -9,17 +9,20 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    // MARK: IBOutlets
     @IBOutlet private weak var ingredientTextField: UITextField!
     @IBOutlet private weak var emptyFridgeView: UIView!
     @IBOutlet private weak var ingredientTableView: UITableView!
     @IBOutlet private weak var mealTypePicker: UIPickerView!
     @IBOutlet private weak var dishTypePicker: UIPickerView!
     
-    var ingredients: [String] = []
-    var searchManager = SearchService()
-    var mealType = "All"
-    var dishType = "All"
+    // MARK: Private Variables
+    private var ingredients: [String] = []
+    private var searchManager = SearchService()
+    private var mealType = "All"
+    private var dishType = "All"
     
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -29,6 +32,7 @@ class SearchViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    // MARK: Private Methods
     @objc private func closeKeyboard() {
         view.endEditing(true)
     }
@@ -46,12 +50,13 @@ class SearchViewController: UIViewController {
         ingredientTableView.register(UINib.init(nibName: "IngredientCell", bundle: nil), forCellReuseIdentifier: "ingredientCell")
     }
 
+    // MARK: IBActions
     @IBAction func searchPressed(_ sender: Any) {
         guard ingredients.count > 0 else {
             alert(text: Constante.needOneIngredient)
             return
         }
-        searchManager.searchRecipe(session: searchManager.sessionManager, ingredients: ingredients, mealType: mealType, dishType: dishType) { result in
+        searchManager.searchRecipe(ingredients: ingredients, mealType: mealType, dishType: dishType) { result in
             switch result {
                 case .success(let recipe):
                     let newController = ResultViewController()
@@ -83,6 +88,7 @@ class SearchViewController: UIViewController {
     
 }
 
+// MARK: Extension - TableView
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
@@ -104,6 +110,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK: Extension - TextField
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         closeKeyboard()
@@ -111,6 +118,7 @@ extension SearchViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: Extension - PickerView
 extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

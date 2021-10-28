@@ -9,16 +9,19 @@ import UIKit
 
 class FavoriteViewController: UITableViewController {
 
-    var favorites: [FavoriteRecipe] = []
-    var favoriteRecipes: [Hit] = []
-    var favoriteManager = FavoriteService()
-        
+    // MARK: Private Variables
+    private var favorites: [FavoriteRecipe] = []
+    private var favoriteRecipes: [Hit] = []
+    private var favoriteManager = FavoriteService()
+    
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
         tableView.register(UINib.init(nibName: "EmptyFavoriteCell", bundle: nil), forCellReuseIdentifier: "EmptyFavoriteCell")
     }
     
+    // MARK: ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext)
         favoriteRecipes = []
@@ -37,10 +40,12 @@ class FavoriteViewController: UITableViewController {
         }
     }
 
+    // MARK: Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoriteRecipes.count > 0 ? favoriteRecipes.count : 1
     }
     
+    // show the RecipeCell or a Cell to explain how to Add Favorites
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if favoriteRecipes.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
@@ -56,6 +61,7 @@ class FavoriteViewController: UITableViewController {
         }
     }
     
+    // show the Recipe Details
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if favoriteRecipes.count > 0 {
             let newController = DetailViewController()
@@ -64,6 +70,7 @@ class FavoriteViewController: UITableViewController {
         }
     }
     
+    // Delete the FavoriteRecipe from CoreData
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if favoriteRecipes.count > 0 {
             if editingStyle == .delete {
@@ -71,8 +78,6 @@ class FavoriteViewController: UITableViewController {
                 favoriteRecipes.remove(at: indexPath.row)
                 tableView.reloadData()
             }
-        } else {
-            // sinon ne pas pouvoir swipe la cell ??
         }
     }
     

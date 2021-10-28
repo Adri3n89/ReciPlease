@@ -9,6 +9,7 @@ import UIKit
 
 class RecipeCell: UITableViewCell {
 
+    // MARK: IBOutlets
     @IBOutlet private weak var recipeImageview: UIImageView!
     @IBOutlet private weak var recipeNameLabel: UILabel!
     @IBOutlet private weak var recipeDetailLabel: UILabel!
@@ -17,6 +18,7 @@ class RecipeCell: UITableViewCell {
     @IBOutlet private weak var effectView: UIView!
     @IBOutlet private weak var infoView: UIView!
     
+    // MARK: Methods
     func setup(image: String, name: String, detail: String, yield: Float, time: Int) {
         recipeNameLabel.text = name
         recipeDetailLabel.text = detail
@@ -26,7 +28,6 @@ class RecipeCell: UITableViewCell {
         recipeImageview.layer.borderColor = Constante.greenColor.cgColor
         recipeImageview.layer.borderWidth = 3
         effectView.roundCorners(corners: [.bottomLeft, .bottomRight] , radius: 15)
-        effectView.addGradient(colors: [UIColor.clear, UIColor.darkGray])
         infoView.layer.borderWidth = 2
         infoView.layer.borderColor = Constante.greenColor.cgColor
         infoView.layer.cornerRadius = 5

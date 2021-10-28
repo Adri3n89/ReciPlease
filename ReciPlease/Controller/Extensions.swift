@@ -8,14 +8,8 @@
 import UIKit
 import SDWebImage
 
+// MARK: Extension UIView
 extension UIView {
-    func addGradient(colors: [UIColor]) {
-        let gradient:CAGradientLayer = CAGradientLayer()
-        gradient.frame.size = self.frame.size
-        gradient.colors = colors
-        self.layer.addSublayer(gradient)
-    }
-    
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
          let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
          let mask = CAShapeLayer()
@@ -25,6 +19,7 @@ extension UIView {
     
 }
 
+// MARK: Extension UIViewController
 extension UIViewController {
     func alert(text: String) {
         let alert = UIAlertController(title: Constante.error, message: text, preferredStyle: .alert)
@@ -34,6 +29,7 @@ extension UIViewController {
     }
 }
 
+// MARK: Extension UIImageView
 extension UIImageView {
     func setImage(url: String) {
         self.sd_setImage(with: URL(string: url), placeholderImage: nil,
@@ -42,5 +38,8 @@ extension UIImageView {
                                          progress: nil,
                                          completed: { _, downloadException, _, downloadURL in
                                      })
+        if self.image == nil {
+            self.image = UIImage(named: Constante.defaultImage)
+        }
     }
 }

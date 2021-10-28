@@ -9,8 +9,10 @@ import UIKit
 
 class IngredientCell: UITableViewCell {
     
+    // MARK: IBOutlet
     @IBOutlet private weak var ingredientLabel: UILabel!
     
+    // MARK: Method
     func setupLabel(ingredient: String) {
         ingredientLabel.text = "- \(ingredient)"
     }

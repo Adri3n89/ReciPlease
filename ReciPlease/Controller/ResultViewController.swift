@@ -9,25 +9,30 @@ import UIKit
 import Alamofire
 
 class ResultViewController: UITableViewController {
-        
+     
+    // MARK: Private Variable
+    private var searchManager = SearchService()
+    
+    // MARK: Variable
     var researchResult: SearchResponse? {
         didSet {
             tableView.reloadData()
         }
     }
-    
-    var searchManager = SearchService()
-        
+
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "recipeCell")
         tableView.register(UINib.init(nibName: "EmptyFavoriteCell", bundle: nil), forCellReuseIdentifier: "EmptyFavoriteCell")
     }
     
+    // MARK: ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
     }
 
+    // MARK: Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let result = researchResult else { return 0 }
         return result.hits.count == 0 ? 1 : result.hits.count
@@ -45,7 +50,8 @@ class ResultViewController: UITableViewController {
         let recipe = result.hits[indexPath.row].recipe
         cell.setup(image: recipe.image, name: recipe.label, detail: ingredientsString, yield: recipe.yield, time: recipe.totalTime)
         if indexPath.row == result.hits.count - 3 {
-            searchManager.loadNewPage(url: (researchResult?.links.next!.href)!) { result in
+            guard let url = researchResult?.links.next?.href else { return UITableViewCell() }
+            searchManager.loadNewPage(url: url) { result in
                 switch result {
                     case .success(let recipe):
                         self.researchResult!.links.next!.href = recipe.links.next!.href

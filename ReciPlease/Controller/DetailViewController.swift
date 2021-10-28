@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
     
+    // MARK: IBOutlets
     @IBOutlet private weak var recipeImageview: UIImageView!
     @IBOutlet private weak var recipeNameLabel: UILabel!
     @IBOutlet private weak var likeLabel: UILabel!
@@ -17,23 +19,25 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var infoView: UIView!
     @IBOutlet private weak var ingredientTableView: UITableView!
     
+    // MARK: Variable
     var hit: Hit?
 
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupOutlets()
         setupTableview()
-        effectView.addGradient(colors: [.yellow, .red])
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(setFavorite))
     }
     
+    // MARK: ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         let favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext).filter { $0.uri == hit?.recipe.uri }
         navigationItem.rightBarButtonItem?.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
     
+    // MARK: Private Methods
     private func setupOutlets() {
-        effectView.addGradient(colors: [UIColor.clear, UIColor.darkGray])
         guard let recipe = hit?.recipe else { return }
         recipeImageview.setImage(url: recipe.image)
         recipeNameLabel.text = recipe.label
@@ -48,19 +52,9 @@ class DetailViewController: UIViewController {
     @objc private func setFavorite() {
         var favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext).filter { $0.uri == hit?.recipe.uri }
         if favorites.count == 0 {
-            let favorite = FavoriteRecipe(context: AppDelegate.viewContext)
-            favorite.uri = hit?.recipe.uri
-            try? AppDelegate.viewContext.save()
+            FavoriteRecipe.addRecipe(uri: hit!.recipe.uri, context: AppDelegate.viewContext)
         } else {
             FavoriteRecipe.deleteRecipe(uri: hit!.recipe.uri, context: AppDelegate.viewContext)
-                    // delete all FavoriteRecipe in CoreData
-//                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FavoriteRecipe")
-//                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//
-//                    do {
-//                        try context.execute(deleteRequest)
-//                    } catch let error as NSError {
-//                    }
         }
         favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext).filter { $0.uri == hit?.recipe.uri }
         navigationItem.rightBarButtonItem!.image = favorites.count == 0 ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
@@ -72,6 +66,7 @@ class DetailViewController: UIViewController {
         ingredientTableView.dataSource = self
     }
 
+    // MARK: IBAction
     @IBAction func getDirectionPressed(sender: Any) {
         guard let recipe = hit?.recipe else { return }
         let newController = WebViewController()
@@ -81,6 +76,7 @@ class DetailViewController: UIViewController {
     
 }
 
+// MARK: Extension - TableView
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let recipe = hit?.recipe else { return 0 }

@@ -29,7 +29,7 @@ class Tabbar: UITabBarController {
         tabBar.tintColor = Constante.blueColor
         tabBar.backgroundColor = Constante.greenColor
         tabBar.unselectedItemTintColor = .darkGray
-
     }
     
 }
+    
