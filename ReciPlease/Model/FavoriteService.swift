@@ -11,7 +11,7 @@ import Alamofire
 class FavoriteService {
     
     // MARK: Private Variable
-    private var sessionManager: Session = {
+    var sessionManager: Session = {
            let configuration = URLSessionConfiguration.af.default
            configuration.timeoutIntervalForRequest = 30
            configuration.waitsForConnectivity = false

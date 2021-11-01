@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
         ingredientTextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         view.addGestureRecognizer(tap)
+        navigationController?.navigationBar.isHidden = true
     }
     
     // MARK: Private Methods
@@ -61,6 +62,7 @@ class SearchViewController: UIViewController {
                 case .success(let recipe):
                     let newController = ResultViewController()
                     newController.researchResult = recipe
+                    self.navigationController?.navigationBar.isHidden = false
                     self.navigationController?.pushViewController(newController, animated: true)
                 case .failure(let error):
                     self.alert(text: error.localizedDescription)

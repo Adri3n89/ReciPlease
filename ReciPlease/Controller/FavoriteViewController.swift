@@ -23,6 +23,7 @@ class FavoriteViewController: UITableViewController {
     
     // MARK: ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
         favorites = FavoriteRecipe.getAll(context: AppDelegate.viewContext)
         favoriteRecipes = []
         if favorites.count > 0 {
@@ -66,6 +67,7 @@ class FavoriteViewController: UITableViewController {
         if favoriteRecipes.count > 0 {
             let newController = DetailViewController()
             newController.hit = favoriteRecipes[indexPath.row]
+            self.navigationController?.navigationBar.isHidden = false
             self.navigationController?.pushViewController(newController, animated: true)
         }
     }
