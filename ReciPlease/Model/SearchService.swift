@@ -13,8 +13,6 @@ class SearchService {
     // MARK: Private Variable
     var sessionManager: Session = {
            let configuration = URLSessionConfiguration.af.default
-           configuration.timeoutIntervalForRequest = 30
-           configuration.waitsForConnectivity = false
            return Session(configuration: configuration)
        }()
 

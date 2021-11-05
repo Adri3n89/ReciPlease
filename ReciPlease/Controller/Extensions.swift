@@ -32,12 +32,7 @@ extension UIViewController {
 // MARK: Extension UIImageView
 extension UIImageView {
     func setImage(url: String) {
-        self.sd_setImage(with: URL(string: url), placeholderImage: nil,
-                                         options: SDWebImageOptions.highPriority,
-                                         context: nil,
-                                         progress: nil,
-                                         completed: { _, downloadException, _, downloadURL in
-                                     })
+        self.sd_setImage(with: URL(string: url))
         if self.image == nil {
             self.image = UIImage(named: Constante.defaultImage)
         }
