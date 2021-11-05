@@ -78,6 +78,29 @@ final class ReciPleaseTests: XCTestCase {
         wait(for: [requestExpectation], timeout: 10.0)
     }
     
+    // MARK: NO DATA
+    func testSearchRecipesWithNoData() {
+        let searchService = SearchService()
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self]
+        let sessionManager = Alamofire.Session(configuration: configuration)
+        searchService.sessionManager = sessionManager
+        let apiEndpoint = URL(string: "\(Constante.searchURL)chicken")!
+        let requestExpectation = expectation(description: "Request should finish")
+
+        let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 200, data: [.get: Data()])
+        mock.register()
+
+        searchService.searchRecipe(ingredients: ["chicken"], mealType: "All", dishType: "All") { response in
+            if case .failure(let error) = response {
+                XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength).localizedDescription)
+                requestExpectation.fulfill()
+            }
+        }
+        wait(for: [requestExpectation], timeout: 10.0)
+    }
+    
     // MARK: BAD RESPONSE
     func testSearchRecipesWithBadResponse() {
         let searchService = SearchService()
@@ -160,6 +183,29 @@ final class ReciPleaseTests: XCTestCase {
         searchService.loadNewPage(url: FakeResponseData.newPageUrlString) { response in
             if case .failure(let error) = response {
                 XCTAssertNotNil(error)
+                requestExpectation.fulfill()
+            }
+        }
+        wait(for: [requestExpectation], timeout: 10.0)
+    }
+    
+    // MARK: NO DATA
+    func testLoadNewPageWithNoData() {
+        let searchService = SearchService()
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self]
+        let sessionManager = Alamofire.Session(configuration: configuration)
+        searchService.sessionManager = sessionManager
+        let apiEndpoint = URL(string: FakeResponseData.newPageUrlString)!
+        let requestExpectation = expectation(description: "Request should finish")
+
+        let mock = Mock(url: apiEndpoint, dataType: .json, statusCode: 200, data: [.get: Data()])
+        mock.register()
+        
+        searchService.loadNewPage(url: FakeResponseData.newPageUrlString) { response in
+            if case .failure(let error) = response {
+                XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength).localizedDescription)
                 requestExpectation.fulfill()
             }
         }
@@ -253,6 +299,33 @@ final class ReciPleaseTests: XCTestCase {
         favoriteService.loadFavorite(recipes: [favorite1]) { response in
             if case .failure(let error) = response {
                 XCTAssertNotNil(error)
+                requestExpectation.fulfill()
+            }
+        }
+        wait(for: [requestExpectation], timeout: 10.0)
+    }
+    
+    // MARK: NO DATA
+    func testLoadFavoriteWithNoData() {
+        let context = CoreDataStack().persistentContainer.newBackgroundContext()
+        let favoriteService = FavoriteService()
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self]
+        let sessionManager = Alamofire.Session(configuration: configuration)
+        favoriteService.sessionManager = sessionManager
+
+        let requestExpectation = expectation(description: "Request should finish")
+
+        let favorite1 = FavoriteRecipe(context: context)
+        favorite1.uri = FakeResponseData.favorite1Uri
+
+        let mock = Mock(url: FakeResponseData.favorite1Url, dataType: .json, statusCode: 200, data: [.get: Data()])
+        mock.register()
+
+        favoriteService.loadFavorite(recipes: [favorite1]) { response in
+            if case .failure(let error) = response {
+                XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength).localizedDescription)
                 requestExpectation.fulfill()
             }
         }
